@@ -1,0 +1,17 @@
+/* alignment */
+.h_align-center {
+    margin: 0 auto;
+}
+
+.h_float-left {
+    float: left;
+}
+
+.h_float-right {
+    float: right;
+}
+
+/* text */
+.h_text-center {
+    text-align: center;
+}

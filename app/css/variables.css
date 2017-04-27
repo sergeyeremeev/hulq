@@ -1,0 +1,11 @@
+:root {
+    /* font-family rules */
+    --font-heading: AvantGarde, sans-serif;
+    --font-primary: ProximaNova, sans-serif;
+    --font-secondary: Montserrat, sans-serif;
+
+    /* colors */
+    --color-primary: #05104c;
+    --color-accent-darker: #01d6cd;
+    --color-accent-lighter: #00fff5;
+}

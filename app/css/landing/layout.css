@@ -1,0 +1,10 @@
+.landing-section {
+    background: var(--color-primary);
+    padding-bottom: 100px;
+
+    &__top {
+        height: calc(100vh - 104px);
+        position: relative;
+        margin-bottom: 480px;
+    }
+}

@@ -1,6 +1,7 @@
 module.exports = {
     plugins: {
-        // 'postcss-import': {},
+        'postcss-omit-import-tilde': {},
+        'postcss-import': {},
         'postcss-cssnext': {}
     }
 };

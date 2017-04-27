@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, './app'),
@@ -34,8 +33,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin({filename: 'style.css', allChunks: false})
-        //new StyleLintPlugin()
+        new ExtractTextPlugin({filename: 'style.css', allChunks: true})
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
