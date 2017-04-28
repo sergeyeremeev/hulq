@@ -1,6 +1,6 @@
 .landing-block {
     opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: transform 0.6s ease-in-out, opacity 0.7s ease-in-out;
     will-change: transform, opacity;
 
     &.appear {
@@ -51,6 +51,10 @@
         position: absolute;
         bottom: 0;
         width: 100%;
+
+        &.appeared {
+            transition: none;
+        }
 
         & h1 {
             margin-bottom: 16px;

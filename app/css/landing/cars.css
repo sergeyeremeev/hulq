@@ -1,5 +1,17 @@
-.car-center {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -90%);
+.car-landing {
+
+    &--center {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        transition: transform 0.8s ease-in-out;
+
+        &.appear {
+            transform: translate(-50%, -80%);
+        }
+
+        &.appeared {
+            transition: none;
+        }
+    }
 }

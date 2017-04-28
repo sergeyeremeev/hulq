@@ -2,14 +2,14 @@ var jQuery = require('jquery');
 
 (function ($) {
 
-    var hulq_landing = {
+    var landing_text = {
 
         elements: {
             contentBlocks: $('.landing-block'),
             contentBlockFirst: $('.landing-block--top'),
             contentBlockLast: $('.landing-block--bottom'),
-            actionButtonMain: $('.button--landing-main'),
-            carCentral: $('.car-center')
+            landingSectionTop: $('.landing-section__top'),
+            actionButtonMain: $('.button--landing-main')
         },
 
         init: function () {
@@ -18,11 +18,17 @@ var jQuery = require('jquery');
             this.showInitialText();
 
             $(window).on('scroll.animate-text', that.scrolling.bind(this));
+            $(window).on('scroll.text-hide', that.scrollTextHide.bind(this));
             $(window).on('scroll', that.toggleActionButtonView.bind(this));
         },
 
         showInitialText: function () {
+            var that = this;
             this.elements.contentBlockFirst.add(this.elements.actionButtonMain).addClass('appear');
+
+            setTimeout(function () {
+                that.elements.contentBlockFirst.addClass('appeared');
+            }, 700);
         },
 
         scrolling: function () {
@@ -33,7 +39,7 @@ var jQuery = require('jquery');
 
             this.elements.contentBlocks.not('.landing-block--top').each(function () {
                 var $this = $(this);
-                if (scrolledHeight + windowHeight + 100 >= $this.offset().top) {
+                if (scrolledHeight + windowHeight + 50 >= $this.offset().top) {
                     $this.addClass('appear');
                 }
             });
@@ -42,6 +48,24 @@ var jQuery = require('jquery');
                 console.log('unboun');
                 $(window).off('scroll.animate-text');
             }
+        },
+
+        scrollTextHide: function () {
+            if ($(document).scrollTop() === 0) {
+                return;
+            }
+
+            var scrolledHeight = $(document).scrollTop(),
+                operationHeight = this.elements.landingSectionTop.height() / 2,
+                opacityValue;
+
+            if (scrolledHeight <= operationHeight) {
+                opacityValue = (1 - scrolledHeight / operationHeight).toFixed(2);
+                this.elements.contentBlockFirst.attr('style', 'opacity: ' + opacityValue);
+            } else {
+                this.elements.contentBlockFirst.attr('style', 'opacity: ' + 0);
+            }
+
         },
 
         toggleActionButtonView: function () {
@@ -58,7 +82,7 @@ var jQuery = require('jquery');
     };
 
     $(function () {
-        hulq_landing.init();
+        landing_text.init();
     });
 
 })(jQuery);
