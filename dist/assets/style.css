@@ -335,19 +335,30 @@ ul {
 }/* text */.h_text-center {
     text-align: center;
 }.landing-block {
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-    will-change: transform, opacity
-}.landing-block.appear{
-  opacity: 1;
 }.landing-block h1,
     .landing-block h2{
   font-family: AvantGarde, sans-serif;
   font-size: 48px;
   line-height: 1.2;
   color: #fff;
+}.landing-block h1 .line-span, .landing-block h2 .line-span{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}.landing-block h1 .char-mask, .landing-block h2 .char-mask{
+  display: inline-block;
+  min-width: 14px;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  will-change: transform, opacity;
+}.landing-block h1 .char-mask.appear, .landing-block h2 .char-mask.appear{
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }.landing-block h5{
   margin-bottom: 20px;
   line-height: 1.3;
@@ -364,6 +375,17 @@ ul {
   font-size: 20px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  will-change: transform, opacity;
+}.landing-block p.appear{
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }.landing-block--top,
     .landing-block--bottom{
 }.landing-block--top p, .landing-block--bottom p{
@@ -374,8 +396,6 @@ ul {
   position: absolute;
   bottom: 0;
   width: 100%;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
 }.landing-block--top h1{
   margin-bottom: 16px;
 }.landing-block--top p{
