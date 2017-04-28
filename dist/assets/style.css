@@ -326,6 +326,8 @@ ul {
 }.container {
 }.container--full{
   width: 100%;
+}.h_hidden {
+    display: none;
 }/* alignment */.h_align-center {
     margin: 0 auto;
 }.h_float-left {
@@ -336,35 +338,43 @@ ul {
     text-align: center;
 }.landing-block {
 }.landing-block h1,
-    .landing-block h2{
-  font-family: AvantGarde, sans-serif;
-  font-size: 48px;
-  line-height: 1.2;
-  color: #fff;
-}.landing-block h1 .line-span, .landing-block h2 .line-span{
+    .landing-block h2,
+    .landing-block h3{
+}.landing-block h1 .line-span, .landing-block h2 .line-span, .landing-block h3 .line-span{
   display: block;
   white-space: nowrap;
   overflow: hidden;
-}.landing-block h1 .char-mask, .landing-block h2 .char-mask{
+}.landing-block h1 .char-mask, .landing-block h2 .char-mask, .landing-block h3 .char-mask{
   display: inline-block;
   min-width: 14px;
   opacity: 0;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
-  transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   will-change: transform, opacity;
-}.landing-block h1 .char-mask.appear, .landing-block h2 .char-mask.appear{
+}.landing-block h1 .char-mask.appear, .landing-block h2 .char-mask.appear, .landing-block h3 .char-mask.appear{
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}.landing-block h1,
+    .landing-block h2{
+  font-family: AvantGarde, sans-serif;
+  font-size: 48px;
+  line-height: 1.2;
+  color: #fff;
 }.landing-block h5{
   margin-bottom: 20px;
   line-height: 1.3;
   font-weight: 600;
   font-size: 24px;
   color: #00fff5;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
+}.landing-block h5.appear{
+  opacity: 1;
 }.landing-block h3{
   margin-bottom: 24px;
   font-weight: 400;
@@ -378,9 +388,9 @@ ul {
   opacity: 0;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
-  transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   will-change: transform, opacity;
 }.landing-block p.appear{
   opacity: 1;
@@ -402,9 +412,6 @@ ul {
   margin-bottom: 40px;
 }.landing-block--top .button--primary{
   margin-bottom: 40px;
-}.landing-block--top.appear{
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
 }.landing-block--bottom{
 }.landing-block--bottom h2{
   margin-bottom: 24px;
@@ -415,28 +422,18 @@ ul {
 }.landing-block--2,
     .landing-block--3{
   position: relative;
-}.landing-block--2.appear, .landing-block--3.appear{
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }.landing-block--2{
   left: 75%;
   margin-bottom: 570px;
-  -webkit-transform: translateX(50%);
-          transform: translateX(50%);
 }.landing-block--3{
   left: 25%;
   margin-bottom: 710px;
-  -webkit-transform: translateX(-150%);
-          transform: translateX(-150%);
 }.landing-block--4{
   position: relative;
   left: 40%;
   margin-bottom: 300px;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-}.landing-block--4.appear{
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
 }/* buttons */.button {
     display: inline-block;
     text-align: center
@@ -457,9 +454,9 @@ ul {
   opacity: 0;
   -webkit-transform: translateX(-50%) translateY(230px);
           transform: translateX(-50%) translateY(230px);
-  transition: opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  transition: opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   will-change: transform, opacity;
 }.button--landing-main.appear{
   opacity: 1;

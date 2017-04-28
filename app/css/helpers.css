@@ -1,3 +1,7 @@
+.h_hidden {
+    display: none;
+}
+
 /* alignment */
 .h_align-center {
     margin: 0 auto;

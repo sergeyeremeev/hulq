@@ -5,7 +5,7 @@ var jQuery = require('jquery');
     var hulq_landing = {
 
         elements: {
-            contentBlocks: $('.landing-block').not('.landing-block--top'),
+            contentBlocks: $('.landing-block'),
             contentBlockFirst: $('.landing-block--top'),
             contentBlockLast: $('.landing-block--bottom'),
             actionButtonMain: $('.button--landing-main'),
@@ -14,19 +14,24 @@ var jQuery = require('jquery');
 
         init: function () {
             var that = this;
-            this.wrapLetters(this.elements.contentBlockFirst);
-            this.showInitialText(500);
 
-            $(window).on('scroll', that.scrolling.bind(this));
+            this.elements.contentBlocks.each(function () {
+                that.wrapHeaderLetters($(this));
+            });
+
+            this.showInitialText();
+
+            $(window).on('scroll.animate-text', that.scrolling.bind(this));
             $(window).on('scroll', that.toggleActionButtonView.bind(this));
         },
 
-        showInitialText: function (animationTime) {
-            var chars = this.elements.contentBlockFirst.find('.char-mask'),
-                charsLength = chars.length,
-                speed = Math.round(animationTime / charsLength),
+        showInitialText: function () {
+            var charsLength = this.elements.contentBlockFirst.find('.char-mask').length,
+                speed = Math.round(500 / charsLength),
                 that = this,
                 i;
+
+            this.elements.contentBlockFirst.find('h1').removeClass('h_hidden');
 
             for (i = 1; i <= charsLength; i++) {
                 (function (i) {
@@ -40,23 +45,38 @@ var jQuery = require('jquery');
         },
 
         scrolling: function () {
-            var scrolledHeight = $(document).scrollTop(),
-                windowHeight = $(window).height();
+            var documentHeight = $(document).height(),
+                scrolledHeight = $(document).scrollTop(),
+                windowHeight = $(window).height(),
+                combinedHeight = scrolledHeight + windowHeight;
 
-            this.elements.contentBlocks.each(function () {
+            this.elements.contentBlocks.not('.landing-block--top').each(function () {
                 var $this = $(this);
-                if (scrolledHeight + windowHeight >= $this.offset().top + $this.height()) {
-                    $this.find('p').addClass('appear');
+
+                if (combinedHeight >= $this.offset().top + $this.height()) {
+                    var charsLength = $this.find('.char-mask').length,
+                        speed = Math.round(500 / charsLength),
+                        i;
+
+                    for (i = 1; i <= charsLength; i++) {
+                        (function (i) {
+                            setTimeout(function () {
+                                $this.find('.char-mask:nth-child(' + i + ')').addClass('appear');
+                            }, speed * i);
+                        })(i);
+                    }
+
+                    $this.find('p').add($this.find('h5')).addClass('appear');
                 }
             });
 
-            // if (!this.elements.contentBlocks.not('.visible').length) {
-            //     $(window).off('scroll', this.scrolling);
-            // }
+            if (scrolledHeight >= documentHeight - windowHeight - 100) {
+                $(window).off('scroll.animate-text');
+            }
         },
 
-        wrapLetters: function ($block) {
-            var $this = $block.find('h1'),
+        wrapHeaderLetters: function ($block) {
+            var $this = $block.find(':header').not('h5'),
                 $lineSpans = $this.find('.line-span'),
                 chars,
                 $currentSpan;
@@ -85,7 +105,7 @@ var jQuery = require('jquery');
         }
     };
 
-    $(function () {
+    $(window).on('load', function () {
         hulq_landing.init();
     });
 
