@@ -1,5 +1,6 @@
+/* display */
 .h_hidden {
-    display: none;
+    display: none !important;
 }
 
 /* alignment */

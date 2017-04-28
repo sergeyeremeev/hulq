@@ -7,4 +7,10 @@
         position: relative;
         margin-bottom: 480px;
     }
+
+    &__bottom {
+        height: 267px;
+        position: relative;
+        overflow: hidden;
+    }
 }

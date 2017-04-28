@@ -15,10 +15,6 @@ var jQuery = require('jquery');
         init: function () {
             var that = this;
 
-            this.elements.contentBlocks.each(function () {
-                that.wrapHeaderLetters($(this));
-            });
-
             this.showInitialText();
 
             $(window).on('scroll.animate-text', that.scrolling.bind(this));
@@ -26,22 +22,7 @@ var jQuery = require('jquery');
         },
 
         showInitialText: function () {
-            var charsLength = this.elements.contentBlockFirst.find('.char-mask').length,
-                speed = Math.round(500 / charsLength),
-                that = this,
-                i;
-
-            this.elements.contentBlockFirst.find('h1').removeClass('h_hidden');
-
-            for (i = 1; i <= charsLength; i++) {
-                (function (i) {
-                    setTimeout(function () {
-                        that.elements.contentBlockFirst.find('.char-mask:nth-child(' + i + ')').addClass('appear');
-                    }, speed * i);
-                })(i);
-            }
-
-            this.elements.contentBlockFirst.find('p').add(this.elements.actionButtonMain).addClass('appear');
+            this.elements.contentBlockFirst.add(this.elements.actionButtonMain).addClass('appear');
         },
 
         scrolling: function () {
@@ -52,44 +33,15 @@ var jQuery = require('jquery');
 
             this.elements.contentBlocks.not('.landing-block--top').each(function () {
                 var $this = $(this);
-
-                if (combinedHeight >= $this.offset().top + $this.height()) {
-                    var charsLength = $this.find('.char-mask').length,
-                        speed = Math.round(500 / charsLength),
-                        i;
-
-                    for (i = 1; i <= charsLength; i++) {
-                        (function (i) {
-                            setTimeout(function () {
-                                $this.find('.char-mask:nth-child(' + i + ')').addClass('appear');
-                            }, speed * i);
-                        })(i);
-                    }
-
-                    $this.find('p').add($this.find('h5')).addClass('appear');
+                if (scrolledHeight + windowHeight + 100 >= $this.offset().top) {
+                    $this.addClass('appear');
                 }
             });
 
-            if (scrolledHeight >= documentHeight - windowHeight - 100) {
+            if (!this.elements.contentBlocks.not('.visible').length) {
+                console.log('unboun');
                 $(window).off('scroll.animate-text');
             }
-        },
-
-        wrapHeaderLetters: function ($block) {
-            var $this = $block.find(':header').not('h5'),
-                $lineSpans = $this.find('.line-span'),
-                chars,
-                $currentSpan;
-
-            $.each($lineSpans, function (i, el) {
-                $currentSpan = $(el);
-                chars = $currentSpan.text().split('');
-
-                $currentSpan.empty();
-                $.each(chars, function (i, el) {
-                    $currentSpan.append('<span class="char-mask">' + el + '</span>');
-                });
-            });
         },
 
         toggleActionButtonView: function () {
@@ -105,7 +57,7 @@ var jQuery = require('jquery');
         }
     };
 
-    $(window).on('load', function () {
+    $(function () {
         hulq_landing.init();
     });
 
