@@ -5,7 +5,7 @@
     &__top {
         height: calc(100vh - 104px);
         position: relative;
-        margin-bottom: 480px;
+        margin-bottom: 115vh;
     }
 
     &__bottom {

@@ -378,7 +378,7 @@ ul {
 }.landing-section__top{
   height: calc(100vh - 104px);
   position: relative;
-  margin-bottom: 480px;
+  margin-bottom: 115vh;
 }.landing-section__bottom{
   height: 267px;
   position: relative;
@@ -482,5 +482,20 @@ ul {
 }.car-landing--center.appeared{
   transition: none;
 }.car-landing--yellow{
-  position: ;
+  position: fixed;
+  left: 80%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+}.car-landing--white{
+  position: fixed;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(-100%, -25%);
+          transform: translate(-100%, -25%);
+}.car-landing--red{
+  position: fixed;
+  left: 25%;
+  top: 100%;
+  -webkit-transform: translate(-25%, 0);
+          transform: translate(-25%, 0);
 }

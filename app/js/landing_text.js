@@ -1,8 +1,8 @@
-var jQuery = require('jquery');
+import jQuery from 'jquery';
 
-(function ($) {
+(($) => {
 
-    var landing_text = {
+    const landing_text = {
 
         elements: {
             contentBlocks: $('.landing-block'),
@@ -12,76 +12,74 @@ var jQuery = require('jquery');
             actionButtonMain: $('.button--landing-main')
         },
 
-        init: function () {
-            var that = this;
+        init: () => {
+            landing_text.showInitialText();
 
-            this.showInitialText();
+            $(window).on('scroll.animate-text', landing_text.scrolling);
+            $(window).on('scroll', landing_text.scrollTextHide);
+            $(window).on('scroll', landing_text.toggleActionButtonView);
 
-            $(window).on('scroll.animate-text', that.scrolling.bind(this));
-            $(window).on('scroll.text-hide', that.scrollTextHide.bind(this));
-            $(window).on('scroll', that.toggleActionButtonView.bind(this));
+            if ($(document).scrollTop() !== 0) {
+                $(window).scroll();
+            }
         },
 
-        showInitialText: function () {
-            var that = this;
-            this.elements.contentBlockFirst.add(this.elements.actionButtonMain).addClass('appear');
+        showInitialText: () => {
+            landing_text.elements.contentBlockFirst.add(landing_text.elements.actionButtonMain).addClass('appear');
 
-            setTimeout(function () {
-                that.elements.contentBlockFirst.add(that.elements.actionButtonMain).addClass('appeared');
+            setTimeout(() => {
+                landing_text.elements.contentBlockFirst.add(landing_text.elements.actionButtonMain).addClass('appeared');
             }, 700);
         },
 
-        scrolling: function () {
-            var documentHeight = $(document).height(),
-                scrolledHeight = $(document).scrollTop(),
-                windowHeight = $(window).height(),
-                combinedHeight = scrolledHeight + windowHeight;
+        scrolling: () => {
+            const scrolledHeight = $(document).scrollTop(),
+                windowHeight = $(window).height();
 
-            this.elements.contentBlocks.not('.landing-block--top').each(function () {
-                var $this = $(this);
+            landing_text.elements.contentBlocks.not('.landing-block--top').each(function () {
+                const $this = $(this);
+
                 if (scrolledHeight + windowHeight + 50 >= $this.offset().top) {
                     $this.addClass('appear');
                 }
             });
 
-            if (!this.elements.contentBlocks.not('.appear').length) {
-                // console.log('unbound');
+            if (!landing_text.elements.contentBlocks.not('.appear').length) {
                 $(window).off('scroll.animate-text');
             }
         },
 
-        scrollTextHide: function () {
+        scrollTextHide: () => {
             if ($(document).scrollTop() === 0) {
                 return;
             }
 
-            var scrolledHeight = $(document).scrollTop(),
-                operationHeight = this.elements.landingSectionTop.height() / 2,
-                opacityValue;
+            const scrolledHeight = $(document).scrollTop(),
+                operationHeight = landing_text.elements.landingSectionTop.height() / 2,
+                opacityValue = (1 - scrolledHeight / operationHeight).toFixed(2);
 
             if (scrolledHeight <= operationHeight) {
-                opacityValue = (1 - scrolledHeight / operationHeight).toFixed(2);
-                this.elements.contentBlockFirst.attr('style', 'opacity: ' + opacityValue);
+                landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + opacityValue);
             } else {
-                this.elements.contentBlockFirst.attr('style', 'opacity: ' + 0);
+                landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + 0);
             }
 
         },
 
-        toggleActionButtonView: function () {
-            var scrolledHeight = $(document).scrollTop(),
+        toggleActionButtonView: () => {
+            const scrolledHeight = $(document).scrollTop(),
                 windowHeight = $(window).height();
 
-            if (scrolledHeight + windowHeight >= this.elements.contentBlockLast.offset().top) {
-                this.elements.actionButtonMain.addClass('disappear');
+            if (scrolledHeight + windowHeight >= landing_text.elements.contentBlockLast.offset().top) {
+                landing_text.elements.actionButtonMain.addClass('disappear');
             } else {
-                this.elements.actionButtonMain.removeClass('disappear');
+                landing_text.elements.actionButtonMain.removeClass('disappear');
             }
 
         }
     };
 
-    $(function () {
+    $(() => {
         landing_text.init();
     });
 
