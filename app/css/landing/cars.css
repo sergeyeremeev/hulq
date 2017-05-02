@@ -1,10 +1,11 @@
 .car-landing {
+    will-change: transform;
 
     &--center {
         position: fixed;
         left: 50%;
         transform: translate(-50%, -100%);
-        transition: transform 0.8s ease-in-out;
+        transition: transform 0.8s var(--decelerate);
 
         &.appear {
             transform: translate(-50%, -80%);
@@ -13,5 +14,9 @@
         &.appeared {
             transition: none;
         }
+    }
+
+    &--yellow {
+        position:
     }
 }

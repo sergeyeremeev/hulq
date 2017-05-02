@@ -4,8 +4,8 @@
 @import './css/variables.css';
 @import './css/grid.css';
 @import './css/helpers.css';
-@import './css/blocks.css';
 @import './css/elements.css';
 
 @import './css/landing/layout.css';
+@import './css/landing/blocks.css';
 @import './css/landing/cars.css';

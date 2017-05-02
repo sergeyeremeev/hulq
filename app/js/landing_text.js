@@ -27,7 +27,7 @@ var jQuery = require('jquery');
             this.elements.contentBlockFirst.add(this.elements.actionButtonMain).addClass('appear');
 
             setTimeout(function () {
-                that.elements.contentBlockFirst.addClass('appeared');
+                that.elements.contentBlockFirst.add(that.elements.actionButtonMain).addClass('appeared');
             }, 700);
         },
 
@@ -44,8 +44,8 @@ var jQuery = require('jquery');
                 }
             });
 
-            if (!this.elements.contentBlocks.not('.visible').length) {
-                console.log('unboun');
+            if (!this.elements.contentBlocks.not('.appear').length) {
+                // console.log('unbound');
                 $(window).off('scroll.animate-text');
             }
         },

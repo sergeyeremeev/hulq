@@ -8,4 +8,10 @@
     --color-primary: #05104c;
     --color-accent-darker: #01d6cd;
     --color-accent-lighter: #00fff5;
+
+    /* animations */
+    --sharp: cubic-bezier(0.4, 0.0, 0.6, 1); /* used by existing elements that may return to the screen - ease-in-out */
+    --accelerate: cubic-bezier(0.4, 0.0, 1, 1); /* elements that leave screen at full speed - ease-in */
+    --decelerate: cubic-bezier(0.0, 0.0, 0.2, 1); /* elements enter the screen at full velocity - ease-out */
+    --standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* growing, shrinking and other property changes - ease-in-out */
 }
