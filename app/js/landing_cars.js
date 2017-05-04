@@ -9,6 +9,8 @@ import jQuery from 'jquery';
             carYellow: $('.car-landing--yellow'),
             carWhite: $('.car-landing--white'),
             carRed: $('.car-landing--red'),
+            carBlack: $('.car-landing--black'),
+            carBeige: $('.car-landing--beige'),
             landingSectionTop: $('.landing-section__top')
         },
 
@@ -19,6 +21,8 @@ import jQuery from 'jquery';
             $(window).on('scroll', landing_cars.animateYellowCar);
             $(window).on('scroll', landing_cars.animateWhiteCar);
             $(window).on('scroll', landing_cars.animateRedCar);
+            $(window).on('scroll', landing_cars.animateBlackCar);
+            $(window).on('scroll', landing_cars.animateBeigeCar);
 
             if ($(document).scrollTop() !== 0) {
                 $(window).scroll();
@@ -73,29 +77,18 @@ import jQuery from 'jquery';
 
         animateWhiteCar: () => {
             const scrolledHeight = $(document).scrollTop(),
+                windowHeight = $(window).height(),
                 segmentHeight = $(window).height() / 3,
                 appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercentY = scrolledFromStart / segmentHeight * 25,
-                scrolledPercentX = scrolledFromStart / segmentHeight * 50,
-                transformValueY = -scrolledPercentY - 25,
-                transformValueX = scrolledPercentX - 100;
+                scrolledPercent = scrolledFromStart / segmentHeight,
+                transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
 
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(-100%, -25%)');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight) {
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(' + transformValueX + '%, ' + transformValueY + '%)');
-            } else if (scrolledHeight > appearPoint + segmentHeight && scrolledHeight <= appearPoint + segmentHeight * 2) {
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(-50%, -50%)');
-            } else if (scrolledHeight > appearPoint + segmentHeight * 2 && scrolledHeight <= appearPoint + segmentHeight * 3) {
-                scrolledFromStart = scrolledHeight - appearPoint - segmentHeight * 2;
-                scrolledPercentY = scrolledFromStart / segmentHeight * 25;
-                scrolledPercentX = scrolledFromStart / segmentHeight * 50;
-                transformValueY = -scrolledPercentY - 50;
-                transformValueX = -scrolledPercentX - 50;
-
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(' + transformValueX + '%, ' + transformValueY + '%);');
+            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
+                landing_cars.elements.carWhite.attr('style', 'transform: translate(-50%, 100%);');
+            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
+                landing_cars.elements.carWhite.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
             }
         },
 
@@ -109,10 +102,51 @@ import jQuery from 'jquery';
                 scrolledPercent = scrolledFromStart / segmentHeight,
                 transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
 
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
+            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
                 landing_cars.elements.carRed.attr('style', 'transform: translate(-50%, 100%);');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 3) {
+            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
                 landing_cars.elements.carRed.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
+            }
+        },
+
+        animateBlackCar: () => {
+            const scrolledHeight = $(document).scrollTop(),
+                segmentHeight = $(window).height() / 3,
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
+
+            let scrolledFromStart = scrolledHeight - appearPoint,
+                scrolledPercent = scrolledFromStart / segmentHeight * 125,
+                transformValue = scrolledPercent - 100;
+
+            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
+                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, -100%)');
+            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight) {
+                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+            } else if (scrolledHeight > appearPoint + segmentHeight && scrolledHeight <= appearPoint + segmentHeight * 2) {
+                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, 25%)');
+            } else if (scrolledHeight > appearPoint + segmentHeight * 2 && scrolledHeight <= appearPoint + segmentHeight * 3) {
+                scrolledFromStart = scrolledHeight - appearPoint - segmentHeight * 2;
+                scrolledPercent = scrolledFromStart / segmentHeight * 125;
+                transformValue = -scrolledPercent + 25;
+
+                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+            }
+        },
+
+        animateBeigeCar: () => {
+            const scrolledHeight = $(document).scrollTop(),
+                windowHeight = $(window).height(),
+                segmentHeight = $(window).height() / 3,
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 9;
+
+            let scrolledFromStart = scrolledHeight - appearPoint,
+                scrolledPercent = scrolledFromStart / segmentHeight,
+                transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
+
+            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
+                landing_cars.elements.carBeige.attr('style', 'transform: translate(-50%, 100%);');
+            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
+                landing_cars.elements.carBeige.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
             }
         }
     };

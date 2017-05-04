@@ -1,5 +1,6 @@
 .car-landing {
     will-change: transform;
+    z-index: 1;
 
     &--center {
         position: fixed;
@@ -16,7 +17,8 @@
         }
     }
 
-    &--yellow {
+    &--yellow,
+    &--black {
         position: fixed;
         left: 80%;
         transform: translate(-50%, -100%);
@@ -25,11 +27,12 @@
     &--white {
         position: fixed;
         left: 0;
-        top: 50%;
-        transform: translate(-100%, -25%);
+        top: 100%;
+        transform: translate(-50%, 0);
     }
 
-    &--red {
+    &--red,
+    &--beige {
         position: fixed;
         left: 25%;
         top: 100%;

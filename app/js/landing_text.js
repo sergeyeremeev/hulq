@@ -50,20 +50,11 @@ import jQuery from 'jquery';
         },
 
         scrollTextHide: () => {
-            if ($(document).scrollTop() === 0) {
-                return;
-            }
-
             const scrolledHeight = $(document).scrollTop(),
                 operationHeight = landing_text.elements.landingSectionTop.height() / 2,
-                opacityValue = (1 - scrolledHeight / operationHeight).toFixed(2);
+                opacityValue = (1 - (scrolledHeight - operationHeight / 2) / operationHeight).toFixed(2);
 
-            if (scrolledHeight <= operationHeight) {
-                landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + opacityValue);
-            } else {
-                landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + 0);
-            }
-
+            landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
         },
 
         toggleActionButtonView: () => {
