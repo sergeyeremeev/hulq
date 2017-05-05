@@ -10,6 +10,9 @@
     --color-accent-darker: #33e2d1;
     --color-accent-lighter: #00fff5;
     --color-gray-medium: #9b9b9b;
+    --color-pink-light: #e94e56;
+    --color-red: #e55c60;
+    --color-gray-light: #dcdcdc;
 
     /* animations */
     --sharp: cubic-bezier(0.4, 0.0, 0.6, 1); /* used by existing elements that may return to the screen - ease-in-out */

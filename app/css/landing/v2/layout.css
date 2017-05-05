@@ -1,5 +1,6 @@
 .landing-section--2 {
     background: var(--color-blue-medium);
+    padding-bottom: 0;
 }
 
 .landing-2 {
@@ -49,4 +50,17 @@
         clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
         background: var(--color-blue-medium);
     }
+}
+
+.landing-2__footer {
+    background: var(--color-red);
+    height: 100px;
+    line-height: 100px;
+    padding: 0 3% 0 6%;
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-social {
+    font-weight: 600;
 }

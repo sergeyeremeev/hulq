@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/arrow_back</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="buttons/btn_outline" transform="translate(-191.000000, -24.000000)" fill="#ffffff">
+            <g id="Icons/arrow_back" transform="translate(191.000000, 24.000000)">
+                <path d="M20.5857864,10 L1.00069463,10 C0.448026248,10 0,9.55613518 0,9 C0,8.44771525 0.44746922,8 1.00069463,8 L20.5857864,8 L14.8093607,2.22357429 C14.4178706,1.83208412 14.4143649,1.2008588 14.8076118,0.807611845 C15.1981361,0.417087553 15.8369903,0.422776726 16.2235743,0.809360728 L23.2911443,7.87693077 C23.3635587,7.94934518 23.4226985,8.02996198 23.4685082,8.11575786 C23.7847079,8.28291728 24,8.61448374 24,9 C24,9.38275948 23.785074,9.71529271 23.4689717,9.88337304 C23.4230977,9.96949362 23.3638032,10.0504104 23.2911443,10.1230692 L16.2235743,17.1906393 C15.8369903,17.5772233 15.1981361,17.5829124 14.8076118,17.1923882 C14.4143649,16.7991412 14.4178706,16.1679159 14.8093607,15.7764257 L20.5857864,10 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

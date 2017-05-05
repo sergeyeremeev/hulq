@@ -1,6 +1,8 @@
 .notify-form__container {
     position: relative;
     left: 10%;
+    overflow: hidden;
+    margin-bottom: 150px;
 
     & span {
         font-size: 18px;
@@ -21,7 +23,7 @@
         background: #fff;
         border-radius: 36px;
         border: none;
-        padding: 0 36px;
+        padding: 0 92px 0 36px;
         font-size: 18px;
     }
 
@@ -70,5 +72,14 @@
             right: 20px;
             transform: translateY(-50%);
         }
+
+        &--dark {
+            background: var(--color-blue-medium);
+            color: #fff;
+        }
+    }
+
+    &.h_align-center {
+        transform: translateX(-40px);
     }
 }
