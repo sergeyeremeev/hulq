@@ -6,6 +6,12 @@
 @import './css/helpers.css';
 @import './css/elements.css';
 
+@import './css/layout/header.css';
+
 @import './css/landing/layout.css';
 @import './css/landing/blocks.css';
 @import './css/landing/cars.css';
+
+@import './css/landing/v2/layout.css';
+@import './css/landing/v2/blocks.css';
+@import './css/landing/v2/notify_form.css';

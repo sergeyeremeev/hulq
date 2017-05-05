@@ -1,5 +1,5 @@
 .landing-section {
-    background: var(--color-primary);
+    background: var(--color-blue-dark);
     padding-bottom: 100px;
 
     &__top {

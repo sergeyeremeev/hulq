@@ -5,9 +5,11 @@
     --font-secondary: Montserrat, sans-serif;
 
     /* colors */
-    --color-primary: #05104c;
-    --color-accent-darker: #01d6cd;
+    --color-blue-dark: #05104c;
+    --color-blue-medium: #0c2756;
+    --color-accent-darker: #33e2d1;
     --color-accent-lighter: #00fff5;
+    --color-gray-medium: #9b9b9b;
 
     /* animations */
     --sharp: cubic-bezier(0.4, 0.0, 0.6, 1); /* used by existing elements that may return to the screen - ease-in-out */
