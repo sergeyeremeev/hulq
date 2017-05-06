@@ -10600,7 +10600,6 @@ var _this = this;
         },
 
         init: function () {
-            console.log('animation started');
             $(window).on('scroll.animate-content-2', landingV2.animateContent);
             $(window).on('scroll', landingV2.toggleNotifyGoTo);
 
@@ -10647,13 +10646,9 @@ var _this = this;
         }
     };
 
-    $(() => {
-        console.log('doc ready');
+    $(window).on('load', () => {
         if ($('.landing-section--2').length) {
-            $(window).on('load', function () {
-                console.log('window loaded');
-                landingV2.init();
-            });
+            landingV2.init();
         }
     });
 })(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
