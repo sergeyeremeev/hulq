@@ -13,6 +13,7 @@ import jQuery from 'jquery';
         },
 
         init: function () {
+            console.log('animation started');
             $(window).on('scroll.animate-content-2', landingV2.animateContent);
             $(window).on('scroll', landingV2.toggleNotifyGoTo);
 
@@ -63,8 +64,12 @@ import jQuery from 'jquery';
     };
 
     $(() => {
+        console.log('doc ready');
         if ($('.landing-section--2').length) {
-            landingV2.init();
+            $(window).on('load', function () {
+                console.log('window loaded');
+                landingV2.init();
+            });
         }
     });
 
