@@ -1,3 +1,8 @@
+@keyframes rotate-arrow {
+    from {transform: rotate(0);}
+    to {transform: rotate(360deg);}
+}
+
 .landing-info-block {
     overflow: hidden;
     position: relative;
@@ -9,6 +14,10 @@
     &.animate {
         opacity: 1;
         transform: translateY(0);
+
+        & .timer-arrow__container img {
+            animation: rotate-arrow 10s;
+        }
     }
 
     &__image {
@@ -22,19 +31,19 @@
         }
 
         &--timer {
-            width: 35%;
+            width: 30%;
             margin-left: 10%;
             position: relative;
 
             & .timer-arrow__container {
                 position: absolute;
-                transform-origin: 51% 48%;
-                width: 100%;
-                top: 0;
-                left: 0;
+                width: 70%;
+                top: calc(33%);
+                left: 50%;
+                transform: translateX(-50%);
 
                 & img {
-                    transform: translate(4%, 1%);
+                    will-change: transform;
                 }
             }
         }
@@ -174,14 +183,11 @@
         left: 0;
         height: 350px;
         width: 100%;
-        clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
         background: var(--color-red);
-        transition: clip-path 2s ease;
-        will-change: clip-path;
-
-        &.animate {
-            clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
-        }
+        transform-origin: left top;
+        transform: skewY(10deg);
+        backface-visibility: hidden;
+        outline: 1px solid transparent;
     }
 
     &-bg {
