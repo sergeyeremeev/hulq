@@ -5,15 +5,21 @@ import jQuery from 'jquery';
     const landingV2 = {
 
         elements: {
-            animatedBlocks: $('.landing-info-block').add('.notify-form__container').add('.landing-2__bottom-content')
-                .add('.landing-2__bottom-title').add('.landing-2__image').add('.landing-2__title').add('.landing-2__cut')
-                .add('.landing-2__bottom-cut')
+            animatedBlocks: $('.landing-2__image').add('.landing-2__title').add('.landing-2__cut')
+                .add('.landing-info-block').add('.notify-form__container').add('.landing-2__bottom-content')
+                .add('.landing-2__bottom-title').add('.landing-2__bottom-cut'),
+            notifyGoToButton: $('.notify-go-to'),
+            fakeNotifyButton: $('.fake-notify')
         },
 
         init: function () {
             $(window).on('scroll.animate-content-2', landingV2.animateContent);
+            $(window).on('scroll', landingV2.toggleNotifyGoTo);
 
             $(window).scroll();
+
+            landingV2.elements.fakeNotifyButton.on('click', landingV2.notifyTriggerSubmit);
+            landingV2.elements.notifyGoToButton.on('click', landingV2.goToNotifyForm);
         },
 
         animateContent: () => {
@@ -31,6 +37,28 @@ import jQuery from 'jquery';
             if (!landingV2.elements.animatedBlocks.not('.animate').length) {
                 $(window).off('scroll.animate-content-2');
             }
+        },
+
+        toggleNotifyGoTo: () => {
+            const scrolledHeight = $(document).scrollTop();
+
+            if (scrolledHeight >= $(window).height() + 60 && scrolledHeight < $('.landing-info-block--4').offset().top) {
+                landingV2.elements.notifyGoToButton.addClass('appear');
+            } else {
+                landingV2.elements.notifyGoToButton.removeClass('appear');
+            }
+        },
+
+        goToNotifyForm: () => {
+            $('html, body').animate(
+                { scrollTop: $(window).height() },
+                300, 'swing'
+            );
+        },
+
+        notifyTriggerSubmit: (e) => {
+            e.preventDefault();
+            $(this).siblings('input[type="submit"]').trigger('click');
         }
     };
 

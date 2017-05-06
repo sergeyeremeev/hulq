@@ -176,7 +176,7 @@
         width: 100%;
         clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
         background: var(--color-red);
-        transition: clip-path 1.2s ease;
+        transition: clip-path 2s ease;
         will-change: clip-path;
 
         &.animate {
