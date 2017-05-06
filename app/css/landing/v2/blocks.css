@@ -1,6 +1,15 @@
 .landing-info-block {
     overflow: hidden;
     position: relative;
+    transition: transform 1.2s ease, opacity 1s ease;
+    opacity: 0;
+    transform: translateY(70%);
+    will-change: transform;
+
+    &.animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     &__image {
         width: 40%;
@@ -97,6 +106,8 @@
     }
 
     &--4 {
+        position: relative;
+        z-index: 1;
 
         & .landing-info-block__text {
             top: 0;
@@ -119,6 +130,27 @@
         font-size: 460px;
         color: #fff;
         position: relative;
+        transition: transform 1.2s ease, opacity 1s ease;
+        opacity: 0;
+        transform: translateY(70%);
+        will-change: transform;
+
+        &.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &-content {
+        transition: transform 1.2s ease, opacity 1s ease;
+        opacity: 0;
+        transform: translateY(70%);
+        will-change: transform;
+
+        &.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     & h2 {
@@ -142,8 +174,14 @@
         left: 0;
         height: 350px;
         width: 100%;
-        clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
         background: var(--color-red);
+        transition: clip-path 1.2s ease;
+        will-change: clip-path;
+
+        &.animate {
+            clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+        }
     }
 
     &-bg {

@@ -152,7 +152,9 @@ import jQuery from 'jquery';
     };
 
     $(() => {
-        landing_cars.init();
+        if ($('.landing-main').length) {
+            landing_cars.init();
+        }
     });
 
 })(jQuery);

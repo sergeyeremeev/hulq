@@ -4,3 +4,5 @@ import './app.css';
 // JS imports
 import './js/landing_text.js';
 import './js/landing_cars.js';
+
+import './js/landing_v2.js';

@@ -71,7 +71,9 @@ import jQuery from 'jquery';
     };
 
     $(() => {
-        landing_text.init();
+        if ($('.landing-main').length) {
+            landing_text.init();
+        }
     });
 
 })(jQuery);
