@@ -3,6 +3,7 @@
 @font-face {
     font-family: AvantGarde;
     src: url(./fonts/ITCAvantGardeStd-Bold.otf);
+    font-weight: 700;
 }
 
 @font-face {

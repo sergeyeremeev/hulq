@@ -2,6 +2,7 @@
 @import './css/defaults.css';
 @import './css/typography.css';
 @import './css/variables.css';
+@import './css/media.css';
 @import './css/grid.css';
 @import './css/helpers.css';
 @import './css/elements.css';

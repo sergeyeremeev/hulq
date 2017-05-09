@@ -11,4 +11,20 @@
         color: #fff;
         font-family: var(--font-heading);
     }
+
+    @media (--tablet-screen) {
+        padding: 20px 0 0 7%;
+
+        & h2 {
+            line-height: 44px;
+        }
+    }
+
+    @media (--mobile) {
+        padding: 16px 0 0 16px;
+
+        & h2 {
+            line-height: 38px;
+        }
+    }
 }
