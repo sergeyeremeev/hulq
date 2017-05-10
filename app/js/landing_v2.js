@@ -57,7 +57,7 @@ import jQuery from 'jquery';
         toggleNotifyGoTo: () => {
             const scrolledHeight = $(document).scrollTop();
 
-            if (scrolledHeight >= $(window).height() + 60 && scrolledHeight < $('.landing-info-block--4').offset().top) {
+            if (scrolledHeight >= $(window).height() + 100 && scrolledHeight < $('.landing-info-block--4').offset().top) {
                 landingV2.elements.notifyFloatingForm.addClass('appear');
             } else {
                 landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
