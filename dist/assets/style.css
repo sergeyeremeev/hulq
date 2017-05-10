@@ -404,6 +404,7 @@ ul {
     padding: 16px 0 0 16px;
   }.site-header h2{
     line-height: 38px;
+    font-size: 28px;
   }
     }.landing-section {
     background: #05104c;
@@ -586,6 +587,16 @@ ul {
   will-change: transform;
 }.landing-2__image img{
   width: 110%;
+}.landing-2__image .landing-banner-image--l{
+  display: block;
+}@media (max-width: 767px){.landing-2__image .landing-banner-image--l{
+    display: none;
+  }
+}.landing-2__image .landing-banner-image--s{
+  display: none;
+}@media (max-width: 767px){.landing-2__image .landing-banner-image--s{
+    display: block;
+  }
 }.landing-2__image.animate{
   opacity: 1;
   -webkit-transform: translate(-5%, -5%);
@@ -661,6 +672,11 @@ ul {
     height: 280px;
     -webkit-transform: skewY(12deg);
             transform: skewY(12deg);
+  }
+}@media (max-width: 767px){.landing-2__cut{
+    height: 155px;
+    -webkit-transform: skewY(20deg);
+            transform: skewY(20deg);
   }
 }.landing-2__footer {
     background: #e55c60;
@@ -858,12 +874,12 @@ ul {
     min-height: 220px;
   }
     }.landing-2__bottom {
-    margin: -280px 0 -1px;
+    margin: -400px 0 -1px;
     padding-bottom: 80px;
     position: relative;
     overflow: hidden
 }.landing-2__bottom h1{
-  font-size: 25vw;
+  font-size: 35vw;
   letter-spacing: -2px;
   font-family: AvantGarde, sans-serif;
   color: #fff;
@@ -933,17 +949,17 @@ ul {
   width: 100%;
   background: #e55c60;
 }@media (min-width: 1441px) and (max-width: 1920px) {.landing-2__bottom{
-    margin: -200px 0 -1px;
+    margin: -320px 0 -1px;
   }
     }@media (min-width: 1025px) and (max-width: 1440px) {.landing-2__bottom{
-    margin: -150px 0 -1px;
+    margin: -175px 0 -1px;
   }
     }@media (min-width: 768px) and (max-width: 1024px) {.landing-2__bottom{
-    margin: -100px 0 -1px;
+    margin: -135px 0 -1px;
   }
     }@media (max-width: 767px) {.landing-2__bottom{
     padding-bottom: 40px;
-    margin: 50px 0 -1px;
+    margin: -20px 0 -1px;
   }.landing-2__bottom h2{
     font-size: 28px;
     margin-bottom: 15px;
@@ -991,11 +1007,31 @@ ul {
   }
     }.notify-form {
     height: 56px;
-    width: 360px;
+    width: 420px;
     position: relative
-}.notify-form input[type="text"]{
+}.notify-form--head{
+  margin-right: 20px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}.notify-form--head.appear{
+  opacity: 1;
+}.notify-form--head input[type="email"]{
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}.notify-form--head.toggled{
+}.notify-form--head.toggled input[type="email"]{
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}.notify-form .input-container{
   height: 100%;
+  width: calc(100% - 80px);
+  overflow: hidden;
+}.notify-form input[type="email"]{
   width: 100%;
+  height: 100%;
   background: #fff;
   border-radius: 36px;
   border: none;
@@ -1019,12 +1055,11 @@ ul {
 }@media (max-width: 767px){.notify-form.h_align-center{
     -webkit-transform: none;
             transform: none;
-    margin: 0;
   }
 }@media (min-width: 768px) and (max-width: 1024px) {.notify-form{
-    width: 240px;
+    width: 300px;
     height: 44px;
-  }.notify-form input[type="text"]{
+  }.notify-form input[type="email"]{
     font-size: 16px;
     padding: 0 82px 0 24px;
     border-radius: 22px;
@@ -1040,9 +1075,13 @@ ul {
     }@media (max-width: 767px) {.notify-form{
     width: calc(100% - 32px);
     height: 38px;
-  }.notify-form input[type="text"]{
-    font-size: 16px;
+  }.notify-form--head{
+    width: calc(100% - 80px);
+    margin-left: 16px;
+  }.notify-form .input-container{
     width: calc(100% - 50px);
+  }.notify-form input[type="email"]{
+    font-size: 16px;
     padding: 0 74px 0 24px;
     border-radius: 20px;
   }.notify-form ::-webkit-input-placeholder{
@@ -1059,8 +1098,6 @@ ul {
     position: absolute;
     top: 0;
     right: 0;
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
     display: inline-block;
     width: 160px;
     height: 56px;
@@ -1105,13 +1142,4 @@ ul {
     height: 12px;
     right: 10px;
   }
-    }.notify-go-to {
-    position: relative;
-    -webkit-transform: none;
-            transform: none;
-    margin-right: 20px;
-    opacity: 0;
-    transition: opacity 0.6s ease
-}.notify-go-to.appear{
-  opacity: 1;
-}
+    }

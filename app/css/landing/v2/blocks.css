@@ -240,13 +240,13 @@
 }
 
 .landing-2__bottom {
-    margin: -280px 0 -1px;
+    margin: -400px 0 -1px;
     padding-bottom: 80px;
     position: relative;
     overflow: hidden;
 
     & h1 {
-        font-size: 25vw;
+        font-size: 35vw;
         letter-spacing: -2px;
         font-family: var(--font-heading);
         color: #fff;
@@ -324,20 +324,20 @@
     }
 
     @media (--large-screen) {
-        margin: -200px 0 -1px;
+        margin: -320px 0 -1px;
     }
 
     @media (--medium-screen) {
-        margin: -150px 0 -1px;
+        margin: -175px 0 -1px;
     }
 
     @media (--tablet-screen) {
-        margin: -100px 0 -1px;
+        margin: -135px 0 -1px;
     }
 
     @media (--mobile) {
         padding-bottom: 40px;
-        margin: 50px 0 -1px;
+        margin: -20px 0 -1px;
 
         & h2 {
             font-size: 28px;

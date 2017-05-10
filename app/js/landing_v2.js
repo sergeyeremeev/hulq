@@ -8,8 +8,9 @@ import jQuery from 'jquery';
             animatedBlocks: $('.landing-2__image').add('.landing-2__title').add('.landing-2__cut')
                 .add('.landing-info-block').add('.notify-form__container').add('.landing-2__bottom-content')
                 .add('.landing-2__bottom-title').add('.landing-2__bottom-cut'),
-            notifyGoToButton: $('.notify-go-to'),
-            fakeNotifyButton: $('.fake-notify'),
+            notifyFloatingForm: $('.notify-form--head'),
+            notifyFloatingButton: $('.fake-notify--toggler'),
+            fakeNotifyButton: $('.fake-notify').not('.fake-notify--toggler'),
             bigTitle: $('.landing-2__bottom-title'),
             bottomCut: $('.landing-2__bottom-cut'),
             bottomBg: $('.landing-2__bottom-bg')
@@ -25,7 +26,8 @@ import jQuery from 'jquery';
             $(window).resize();
 
             landingV2.elements.fakeNotifyButton.on('click', landingV2.notifyTriggerSubmit);
-            landingV2.elements.notifyGoToButton.on('click', landingV2.goToNotifyForm);
+            landingV2.elements.notifyFloatingButton.on('click', landingV2.notifyFormToggle);
+            $(document).on('click', landingV2.hideFloatingForm);
         },
 
         setBottomCutSize: () => {
@@ -56,26 +58,31 @@ import jQuery from 'jquery';
             const scrolledHeight = $(document).scrollTop();
 
             if (scrolledHeight >= $(window).height() + 60 && scrolledHeight < $('.landing-info-block--4').offset().top) {
-                landingV2.elements.notifyGoToButton.addClass('appear');
+                landingV2.elements.notifyFloatingForm.addClass('appear');
             } else {
-                landingV2.elements.notifyGoToButton.removeClass('appear');
+                landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
             }
         },
 
-        goToNotifyForm: (e) => {
+        notifyFormToggle: function (e) {
             e.preventDefault();
 
-            const distanceScrolled = $(document).scrollTop(),
-                windowHeight = $(window).height(),
-                documentHeight = $(document).height(),
-                distanceTop = distanceScrolled - windowHeight,
-                distanceBottom = (documentHeight - windowHeight) - distanceScrolled,
-                scrollTo = distanceTop < distanceBottom ? windowHeight : documentHeight - windowHeight;
+            const $this = $(this),
+                $thisForm = $this.closest('.notify-form');
 
-            $('html, body').animate(
-                { scrollTop: scrollTo },
-                500, 'swing'
-            );
+            if ($thisForm.hasClass('toggled')) {
+                $this.siblings('input[type="submit"]').trigger('click');
+            } else {
+                $this.closest('.notify-form').addClass('toggled');
+            }
+        },
+
+        hideFloatingForm: function (e) {
+            if (landingV2.elements.notifyFloatingForm.hasClass('toggled') &&
+                !landingV2.elements.notifyFloatingForm.is(e.target) &&
+                landingV2.elements.notifyFloatingForm.has(e.target).length === 0) {
+                landingV2.elements.notifyFloatingForm.removeClass('toggled');
+            }
         },
 
         notifyTriggerSubmit: (e) => {

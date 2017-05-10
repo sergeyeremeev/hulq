@@ -55,6 +55,22 @@
             width: 110%;
         }
 
+        & .landing-banner-image--l {
+            display: block;
+
+            @media (--mobile) {
+                display: none;
+            }
+        }
+
+        & .landing-banner-image--s {
+            display: none;
+
+            @media (--mobile) {
+                display: block;
+            }
+        }
+
         &.animate {
             opacity: 1;
             transform: translate(-5%, -5%);
@@ -145,6 +161,11 @@
         @media (--tablet-screen) {
             height: 280px;
             transform: skewY(12deg);
+        }
+
+        @media (--mobile) {
+            height: 155px;
+            transform: skewY(20deg);
         }
     }
 }

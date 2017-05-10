@@ -46,12 +46,40 @@
 
 .notify-form {
     height: 56px;
-    width: 360px;
+    width: 420px;
     position: relative;
 
-    & input[type="text"] {
+    &--head {
+        margin-right: 20px;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+
+        &.appear {
+            opacity: 1;
+        }
+
+        & input[type="email"] {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        &.toggled {
+
+            & input[type="email"] {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    & .input-container {
         height: 100%;
+        width: calc(100% - 80px);
+        overflow: hidden;
+    }
+
+    & input[type="email"] {
         width: 100%;
+        height: 100%;
         background: #fff;
         border-radius: 36px;
         border: none;
@@ -84,15 +112,14 @@
 
         @media (--mobile) {
             transform: none;
-            margin: 0;
         }
     }
 
     @media (--tablet-screen) {
-        width: 240px;
+        width: 300px;
         height: 44px;
 
-        & input[type="text"] {
+        & input[type="email"] {
             font-size: 16px;
             padding: 0 82px 0 24px;
             border-radius: 22px;
@@ -119,9 +146,17 @@
         width: calc(100% - 32px);
         height: 38px;
 
-        & input[type="text"] {
-            font-size: 16px;
+        &--head {
+            width: calc(100% - 80px);
+            margin-left: 16px;
+        }
+
+        & .input-container {
             width: calc(100% - 50px);
+        }
+
+        & input[type="email"] {
+            font-size: 16px;
             padding: 0 74px 0 24px;
             border-radius: 20px;
         }
@@ -149,7 +184,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(50%);
     display: inline-block;
     width: 160px;
     height: 56px;
@@ -199,17 +233,5 @@
             height: 12px;
             right: 10px;
         }
-    }
-}
-
-.notify-go-to {
-    position: relative;
-    transform: none;
-    margin-right: 20px;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-
-    &.appear {
-        opacity: 1;
     }
 }
