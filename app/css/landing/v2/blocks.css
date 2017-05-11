@@ -131,6 +131,18 @@
             & h3 {
                 font-size: 28px;
                 margin-bottom: 15px;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 80px;
+                    height: 4px;
+                    border-radius: 5px;
+                    background: var(--color-accent-lighter);
+                    position: absolute;
+                    left: 0;
+                    top: -20px;
+                }
             }
 
             & p {

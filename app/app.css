@@ -15,4 +15,4 @@
 
 @import './css/landing/v2/layout.css';
 @import './css/landing/v2/blocks.css';
-@import './css/landing/v2/notify_form.css';
+@import 'css/landing/notify_form.css';
