@@ -6,7 +6,7 @@ import jQuery from 'jquery';
 
         elements: {
             animatedBlocks: $('.landing-2__image').add('.landing-2__title').add('.landing-2__cut')
-                .add('.landing-info-block').add('.notify-form__container').add('.landing-2__bottom-content')
+                .add('.landing-info-block').add('.notify-text').add('.notify-form--main').add('.landing-2__bottom-content')
                 .add('.landing-2__bottom-title').add('.landing-2__bottom-cut'),
             notifyFloatingForm: $('.notify-form--head'),
             notifyFloatingButton: $('.fake-notify--toggler'),
@@ -57,7 +57,7 @@ import jQuery from 'jquery';
         toggleNotifyGoTo: () => {
             const scrolledHeight = $(document).scrollTop();
 
-            if (scrolledHeight >= $(window).height() + 100 && scrolledHeight < $('.landing-info-block--4').offset().top) {
+            if (scrolledHeight >= $(window).height() && scrolledHeight < $('.landing-info-block--4').offset().top) {
                 landingV2.elements.notifyFloatingForm.addClass('appear');
             } else {
                 landingV2.elements.notifyFloatingForm.removeClass('appear toggled');

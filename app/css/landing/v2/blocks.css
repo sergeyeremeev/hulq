@@ -20,6 +20,13 @@
         }
     }
 
+    @media (--mobile) {
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        padding: 0 16px;
+    }
+
     &__image {
         width: 40%;
         height: auto;
@@ -46,6 +53,10 @@
                     will-change: transform;
                 }
             }
+
+            @media (--mobile) {
+                margin-top: 40px !important;
+            }
         }
 
         &--car {
@@ -62,11 +73,18 @@
         }
 
         @media (--mobile) {
-            width: 45%;
+            left: 0 !important;
+            order: 2;
+            width: 95%;
+            margin: 0 auto;
 
             &--timer {
-                margin-left: 16px;
-                width: 40%;
+                width: 75%;
+            }
+
+            &--car {
+                width: 50%;
+                margin: 50px auto;
             }
         }
     }
@@ -77,28 +95,6 @@
         top: 50%;
         left: 50%;
         transform: translateY(-50%);
-
-        & h5 {
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.8;
-            font-weight: 700;
-            color: var(--color-pink-light);
-            margin-bottom: 24px;
-            position: relative;
-            padding-left: 50px;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 0;
-                width: 40px;
-                height: 1px;
-                background: var(--color-pink-light);
-            }
-        }
 
         & h3 {
             font-size: 45px;
@@ -115,11 +111,6 @@
 
         @media (--tablet-screen) {
 
-            & h5 {
-                font-size: 14px;
-                margin-bottom: 16px;
-            }
-
             & h3 {
                 font-size: 28px;
                 margin-bottom: 10px;
@@ -131,26 +122,19 @@
         }
 
         @media (--mobile) {
-            max-width: calc(50% - 10px);
-
-            & h5 {
-                font-size: 10px;
-                margin-bottom: 5px;
-                padding-left: 30px;
-
-                &::before {
-                    width: 20px;
-                    top: 8px;
-                }
-            }
+            order: 1;
+            width: 100%;
+            max-width: none;
+            position: static;
+            transform: none;
 
             & h3 {
-                font-size: 16px;
-                margin-bottom: 5px;
+                font-size: 28px;
+                margin-bottom: 15px;
             }
 
             & p {
-                font-size: 10px;
+                font-size: 16px;
             }
         }
     }
@@ -178,7 +162,7 @@
     &--1 {
 
         @media (--mobile) {
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
     }
 
@@ -190,7 +174,7 @@
         }
 
         @media (--mobile) {
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
     }
 
@@ -202,7 +186,7 @@
         }
 
         @media (--mobile) {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
     }
 
@@ -218,24 +202,12 @@
         & .landing-info-block__image {
             width: 30%;
             left: 55%;
-        }
 
-        @media (--mobile) {
-
-            & .landing-info-block__text {
-                max-width: none;
-                width: 55%;
-            }
-
-            & .landing-info-block__image {
-                width: 30%;
-                left: 65%;
+            @media (--mobile) {
+                width: 70%;
+                margin: 50px auto;
             }
         }
-    }
-
-    @media (--mobile) {
-        min-height: 220px;
     }
 }
 
@@ -262,6 +234,28 @@
         }
     }
 
+    &-social {
+        display: none;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 30px;
+        width: calc(100% + 32px);
+        margin-left: -16px;
+        border-bottom: 1px solid var(--color-blue-medium);
+
+        @media (--mobile) {
+            display: block;
+        }
+
+        & span {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+    }
+
     &-content {
         transition: transform 1.2s ease, opacity 1s ease;
         opacity: 0;
@@ -271,6 +265,10 @@
         &.animate {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @media (--mobile) {
+            padding-top: 25px;
         }
     }
 
@@ -336,7 +334,7 @@
     }
 
     @media (--mobile) {
-        padding-bottom: 40px;
+        padding: 0 16px 60px;
         margin: -20px 0 -1px;
 
         & h2 {
@@ -345,7 +343,7 @@
         }
 
         & h3 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 30px;
         }
     }
