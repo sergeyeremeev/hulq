@@ -63,7 +63,7 @@
         left: 0;
         padding-left: 0;
         text-align: center;
-        margin: 0 0 90px;
+        margin: 0;
 
         & img {
             width: 42px;
@@ -115,9 +115,9 @@
         }
 
         @media (--mobile) {
-            position: fixed;
             left: 16px;
-            top: calc(100vh - 67px);
+            top: 16px;
+            margin-bottom: 90px;
         }
     }
 
@@ -140,6 +140,11 @@
             & input[type="email"] {
                 transform: translateX(0);
             }
+        }
+
+        @media (--mobile) {
+            margin-right: 0;
+            left: 16px;
         }
     }
 
@@ -216,10 +221,6 @@
     @media (--mobile) {
         width: calc(100% - 32px);
         height: 42px;
-
-        &--head {
-            display: none;
-        }
 
         &--bottom {
             display: none;

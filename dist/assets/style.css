@@ -567,6 +567,13 @@ ul {
     line-height: 44px;
   }
     }@media (max-width: 767px) {.header-right{
+    right: 0;
+    width: 100%;
+    padding-right: 0;
+    top: auto;
+    bottom: 30px;
+  }.header-right span,
+        .header-right img{
     display: none;
   }
     }.landing-section--2 {
@@ -581,7 +588,8 @@ ul {
   overflow: hidden;
   background: #0c2756;
 }@media (max-width: 767px){.landing-2__top{
-    height: calc(100vh - 180px);
+    height: auto;
+    margin-bottom: 10px;
     padding-top: 35%;
   }
 }.landing-2__image{
@@ -738,6 +746,7 @@ ul {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    clear: both;
     overflow: visible;
     padding: 0 16px;
   }
@@ -1043,7 +1052,7 @@ ul {
     left: 0;
     padding-left: 0;
     text-align: center;
-    margin: 0 0 90px;
+    margin: 0;
   }.notify-text img{
     width: 42px;
     position: static;
@@ -1086,9 +1095,9 @@ ul {
     margin-bottom: -44px;
   }
 }@media (max-width: 767px){.notify-form--main{
-    position: fixed;
     left: 16px;
-    top: calc(100vh - 67px);
+    top: 16px;
+    margin-bottom: 90px;
   }
 }.notify-form--head{
   margin-right: 20px;
@@ -1106,6 +1115,10 @@ ul {
 }.notify-form--head.toggled input[type="email"]{
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}@media (max-width: 767px){.notify-form--head{
+    margin-right: 0;
+    left: 16px;
+  }
 }.notify-form .input-container{
   height: 100%;
   width: calc(100% - 80px);
@@ -1154,8 +1167,6 @@ ul {
     }@media (max-width: 767px) {.notify-form{
     width: calc(100% - 32px);
     height: 42px;
-  }.notify-form--head{
-    display: none;
   }.notify-form--bottom{
     display: none;
   }.notify-form .input-container{
