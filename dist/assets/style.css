@@ -590,7 +590,7 @@ ul {
 }@media (max-width: 767px){.landing-2__top{
     height: auto;
     margin-bottom: 10px;
-    padding-top: 35%;
+    padding-top: 30%;
   }
 }.landing-2__image{
   transition: opacity 1s ease, -webkit-transform 2s ease;
