@@ -10568,8 +10568,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-var _this = this;
-
 
 
 const landingNotify = {
@@ -10638,9 +10636,9 @@ const landingNotify = {
         }
     },
 
-    notifyTriggerSubmit: e => {
+    notifyTriggerSubmit: function (e) {
         e.preventDefault();
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(_this).siblings('input[type="submit"]').trigger('click');
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form').submit();
     }
 };
 

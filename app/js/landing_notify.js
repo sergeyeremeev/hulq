@@ -68,9 +68,9 @@ const landingNotify = {
         }
     },
 
-    notifyTriggerSubmit: (e) => {
+    notifyTriggerSubmit: function (e) {
         e.preventDefault();
-        $(this).siblings('input[type="submit"]').trigger('click');
+        $(this).closest('.notify-form').submit();
     }
 };
 
