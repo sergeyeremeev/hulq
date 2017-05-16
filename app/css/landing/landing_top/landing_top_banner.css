@@ -1,0 +1,20 @@
+.landing-section__top-banner {
+    transition: transform 2s ease, opacity 1s ease;
+    opacity: 0.3;
+    will-change: transform, opacity;
+
+    &.animate {
+        opacity: 1;
+        transform: translate(-5%, -5%);
+    }
+
+    & img {
+        width: 110%;
+    }
+
+    @media (--mobile) {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

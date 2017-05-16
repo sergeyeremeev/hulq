@@ -1,113 +1,31 @@
-.mobile-top-container {
-
-    @media (--mobile) and (orientation: portrait) {
-        height: 100vh;
-    }
-}
-
-.notify-text {
-    padding-left: 70px;
-    position: relative;
-    left: 10%;
-    margin-top: 50px;
-    transition: transform 1.2s ease, opacity 1.2s ease;
-    opacity: 0;
-    transform: translateY(70px);
-    will-change: transform;
-
-    &.animate {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    & img {
-        width: 58px;
-        height: auto;
-        position: absolute;
-        left: 0;
-        bottom: 50%;
-    }
-
-    & h5 {
-        font-size: 22px;
-        line-height: 30px;
-        color: #fff;
-    }
-
-    & span {
-        font-size: 18px;
-        line-height: 30px;
-        color: color(#fff alpha(60%));
-    }
-
-    @media (--tablet-screen) {
-        left: 7%;
-        padding-left: 60px;
-
-        & img {
-            width: 42px;
-        }
-
-        & h5 {
-            font-size: 18px;
-            line-height: 24px;
-        }
-
-        & span {
-            font-size: 14px;
-            line-height: 24px;
-        }
-    }
-
-    @media (--mobile) {
-        left: 0;
-        padding-left: 0;
-        text-align: center;
-        margin: 0;
-
-        & img {
-            width: 42px;
-            position: static;
-            display: block;
-            margin: 0 auto 10px auto;
-            float: none;
-        }
-
-        & h5 {
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
-
-        & span {
-            font-size: 14px;
-            line-height: 1.2;
-            margin-right: 0;
-            margin-bottom: 10px;
-        }
-    }
-}
-
 .notify-form {
-    height: 56px;
-    width: 420px;
     position: relative;
+    width: 420px;
+    height: 56px;
 
-    &--main {
+    &--top {
+        @apply --onload-slide-in;
+        margin-bottom: 30px;
+        transform: translateY(50px);
+
+        &.animate {
+            transform: translateY(0);
+        }
+    }
+
+    &--row {
         top: -56px;
         left: 50%;
         margin-bottom: -56px;
+    }
+
+    &--main {
+
         z-index: 2;
         transition: transform 1.2s ease, opacity 1.2s ease;
         opacity: 0;
         transform: translateY(70px);
         will-change: transform;
-
-        &.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         @media (--tablet-screen) {
             top: -44px;
@@ -122,11 +40,13 @@
     }
 
     &--head {
+        position: relative;
         margin-right: 20px;
         opacity: 0;
         transition: opacity 0.6s ease;
+        z-index: 3;
 
-        &.appear {
+        &.animate {
             opacity: 1;
         }
 

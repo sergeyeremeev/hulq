@@ -1,0 +1,19 @@
+.landing-block--number {
+    left: 15%;
+    width: 50%;
+    margin-bottom: 40vh;
+
+    &:nth-child(odd) {
+        left: 15%;
+        padding-top: 110px;
+    }
+
+    &:nth-child(even) {
+        left: 45%;
+        padding-top: 135px;
+    }
+
+    &:last-child {
+        margin-bottom: 50vh;
+    }
+}

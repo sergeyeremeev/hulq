@@ -1,0 +1,32 @@
+.landing__footer {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+
+    & > div {
+        font-size: 14px;
+    }
+
+    &--fit {
+        height: auto;
+        font-size: 35vw;
+        margin-top: -0.26em;
+        padding: 0 0.5em 0 6%;
+        line-height: 0.26em;
+    }
+
+    &--full {
+        height: 100px;
+        padding: 0 3% 0 6%;
+        line-height: 100px;
+    }
+
+    &--pink {
+        background: var(--color-red);
+        border-top: 1px solid var(--color-blue-medium);
+    }
+
+    @media (--mobile) {
+        display: none;
+    }
+}

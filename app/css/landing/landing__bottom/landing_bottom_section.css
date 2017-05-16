@@ -1,0 +1,21 @@
+.landing-section__bottom {
+    overflow: hidden;
+
+    &--v2 {
+        margin: -260px 0 -1px;
+        position: relative;
+        overflow: hidden;
+
+        @media (--large-screen) {
+            margin: -200px 0 -1px;
+        }
+
+        @media (--medium-screen) {
+            margin: -140px 0 -1px;
+        }
+
+        @media (--tablet-screen) {
+            margin: -135px 0 -1px;
+        }
+    }
+}

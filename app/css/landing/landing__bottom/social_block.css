@@ -1,0 +1,36 @@
+.social-block {
+    font-weight: 600;
+
+    & a {
+        display: inline-block;
+        margin: 0 8px;
+        transform: translateY(25%);
+        line-height: normal;
+
+        @media (--mobile) {
+            margin: 0 12px;
+        }
+    }
+}
+
+.landing-section__bottom-social {
+    display: none;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 30px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    border-bottom: 1px solid var(--color-blue-medium);
+
+    & span {
+        display: block;
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    @media (--mobile) {
+        display: block;
+    }
+}

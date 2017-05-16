@@ -1,0 +1,12 @@
+.landing-section__top {
+    position: relative;
+
+    &--bottom-aligned {
+        height: calc(100vh - 135px);
+        overflow: hidden;
+    }
+
+    &--centered {
+        height: 100vh;
+    }
+}

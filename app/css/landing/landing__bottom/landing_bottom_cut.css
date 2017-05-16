@@ -1,0 +1,33 @@
+.landing-section__bottom-cut {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    height: 700px;
+    width: 100%;
+    transform-origin: left top;
+    transform: skewY(10deg);
+    outline: 1px solid transparent;
+    background: var(--color-red);
+    backface-visibility: hidden;
+
+    @media (--medium-screen) {
+        top: 50px;
+    }
+
+    @media (--tablet-screen) {
+        top: 35px;
+    }
+
+    @media (--mobile) {
+        top: 20px;
+    }
+}
+
+.landing-section__bottom-bg-fill {
+    position: absolute;
+    top: 700px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: var(--color-red);
+}

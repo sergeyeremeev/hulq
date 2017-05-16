@@ -1,109 +1,37 @@
-import jQuery from 'jquery';
+import $ from 'jquery';
 
-(($) => {
+const landingV2 = {
 
-    const landingV2 = {
+    elements: {
+        topBanner: $('.landing-section__top-banner'),
+        bottomTitle: $('.landing-section__bottom-title'),
+        bottomCut: $('.landing-section__bottom-cut'),
+        bottomBackgroundFill: $('.landing-section__bottom-bg'),
+    },
 
-        elements: {
-            animatedBlocks: $('.landing-2__image').add('.landing-2__title').add('.landing-2__cut')
-                .add('.landing-info-block').add('.notify-text').add('.notify-form--main').add('.landing-2__bottom-content')
-                .add('.landing-2__bottom-title').add('.landing-2__bottom-cut'),
-            notifyFloatingForm: $('.notify-form--head'),
-            notifyFloatingButton: $('.fake-notify--toggler'),
-            fakeNotifyButton: $('.fake-notify').not('.fake-notify--toggler'),
-            bigTitle: $('.landing-2__bottom-title'),
-            bottomCut: $('.landing-2__bottom-cut'),
-            bottomBg: $('.landing-2__bottom-bg')
-        },
+    init: () => {
+        landingV2.animateTopBanner();
 
-        init: function () {
-            $(window).on('resize', landingV2.setBottomCutSize);
+        $(window).on('resize', landingV2.setBottomCutSize);
 
-            $(window).on('scroll.animate-content-2', landingV2.animateContent);
-            $(window).on('scroll', landingV2.toggleNotifyGoTo);
+        $(window).scroll();
+        $(window).resize();
+    },
 
-            $(window).scroll();
-            $(window).resize();
+    setBottomCutSize: () => {
+        const bottomTitleSize = landingV2.elements.bottomTitle.height();
 
-            landingV2.elements.fakeNotifyButton.on('click', landingV2.notifyTriggerSubmit);
-            landingV2.elements.notifyFloatingButton.on('click', landingV2.notifyFormToggle);
-            $(document).on('click', landingV2.hideFloatingForm);
-        },
+        landingV2.elements.bottomCut.height(bottomTitleSize);
+        landingV2.elements.bottomBackgroundFill.attr('style', 'top: ' + bottomTitleSize + 'px;');
+    },
 
-        setBottomCutSize: () => {
-            const bigTitleSize = landingV2.elements.bigTitle.height();
+    animateTopBanner: () => {
+        landingV2.elements.topBanner.addClass('animate');
+    }
+};
 
-            landingV2.elements.bottomCut.height(bigTitleSize);
-            landingV2.elements.bottomBg.attr('style', 'top: ' + bigTitleSize + 'px;');
-        },
-
-        animateContent: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                windowHeight = $(window).height();
-
-            landingV2.elements.animatedBlocks.each(function () {
-                const $this = $(this);
-
-                if (scrolledHeight + windowHeight + $this.height() / 2 >= $this.offset().top) {
-                    $this.addClass('animate');
-                }
-            });
-
-            if (!landingV2.elements.animatedBlocks.not('.animate').length) {
-                $(window).off('scroll.animate-content-2');
-            }
-        },
-
-        toggleNotifyGoTo: () => {
-            const scrolledHeight = $(document).scrollTop();
-
-            if ($(document).width() < 768) {
-                if (scrolledHeight >= $(window).height()) {
-                    landingV2.elements.notifyFloatingForm.addClass('appear toggled');
-                } else {
-                    landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
-                }
-                return;
-            }
-
-            if (scrolledHeight >= $(window).height() && scrolledHeight < $('.landing-info-block--4').offset().top) {
-                landingV2.elements.notifyFloatingForm.addClass('appear');
-            } else {
-                landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
-            }
-        },
-
-        notifyFormToggle: function (e) {
-            e.preventDefault();
-
-            const $this = $(this),
-                $thisForm = $this.closest('.notify-form');
-
-            if ($thisForm.hasClass('toggled')) {
-                $this.siblings('input[type="submit"]').trigger('click');
-            } else {
-                $this.closest('.notify-form').addClass('toggled');
-            }
-        },
-
-        hideFloatingForm: function (e) {
-            if (landingV2.elements.notifyFloatingForm.hasClass('toggled') &&
-                !landingV2.elements.notifyFloatingForm.is(e.target) &&
-                landingV2.elements.notifyFloatingForm.has(e.target).length === 0) {
-                landingV2.elements.notifyFloatingForm.removeClass('toggled');
-            }
-        },
-
-        notifyTriggerSubmit: (e) => {
-            e.preventDefault();
-            $(this).siblings('input[type="submit"]').trigger('click');
-        }
-    };
-
-    $(window).on('load', () => {
-        if ($('.landing-section--2').length) {
-            landingV2.init();
-        }
-    });
-
-})(jQuery);
+$(window).on('load', () => {
+    if ($('.landing-wrapper--v2').length) {
+        landingV2.init();
+    }
+});

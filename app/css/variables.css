@@ -8,15 +8,43 @@
     --color-blue-dark: #05104c;
     --color-blue-medium: #0c2756;
     --color-accent-darker: #33e2d1;
+    --color-teal-opaque: rgba(0, 255, 245, 0.5);
     --color-accent-lighter: #00fff5;
     --color-gray-medium: #9b9b9b;
     --color-pink-light: #e94e65;
     --color-red: #e55c60;
+    --color-red-light: #ea645f;
     --color-gray-light: #dcdcdc;
+    --color-gray-opaque: rgba(216, 216, 216, 0.3);
 
     /* animations */
     --sharp: cubic-bezier(0.4, 0.0, 0.6, 1); /* used by existing elements that may return to the screen - ease-in-out */
     --accelerate: cubic-bezier(0.4, 0.0, 1, 1); /* elements that leave screen at full speed - ease-in */
     --decelerate: cubic-bezier(0.0, 0.0, 0.2, 1); /* elements enter the screen at full velocity - ease-out */
     --standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* growing, shrinking and other property changes - ease-in-out */
+
+    /* slide-ins */
+    --onload-slide-in: {
+        opacity: 0;
+        transition: transform 1s, opacity 1s;
+        transition-timing-function: var(--decelerate);
+        will-change: transform, opacity;
+
+        &.animate {
+            opacity: 1;
+        }
+    };
+
+    --scroll-slide-in: {
+        opacity: 0;
+        transform: translateY(25%);
+        transition: transform 0.6s, opacity 0.8s;
+        transition-timing-function: var(--decelerate);
+        will-change: transform, opacity;
+
+        &.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    };
 }

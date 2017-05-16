@@ -1,0 +1,11 @@
+.landing-wrapper {
+    position: relative; /* TODO: check if needed */
+    background: var(--color-blue-medium);
+    overflow: hidden;
+
+    &__bottom {
+        position: relative;
+        height: 267px;
+        overflow: hidden;
+    }
+}

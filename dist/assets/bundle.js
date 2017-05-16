@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "assets";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10431,7 +10431,7 @@ return jQuery;
             const scrolledHeight = $(document).scrollTop(),
                   windowHeight = $(window).height(),
                   segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 3;
+                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 2;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
@@ -10447,7 +10447,7 @@ return jQuery;
         animateBlackCar: () => {
             const scrolledHeight = $(document).scrollTop(),
                   segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
+                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 4;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight * 125,
@@ -10472,7 +10472,7 @@ return jQuery;
             const scrolledHeight = $(document).scrollTop(),
                   windowHeight = $(window).height(),
                   segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 9;
+                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 5;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
@@ -10487,7 +10487,7 @@ return jQuery;
     };
 
     $(() => {
-        if ($('.landing-main').length) {
+        if ($('.landing-main').length || $('.landing-wrapper--v1').length) {
             landing_cars.init();
         }
     });
@@ -10502,81 +10502,64 @@ return jQuery;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
-($ => {
+const landingContent = {
 
-    const landing_text = {
+    elements: {
+        onScrollAnimatedBlocks: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.on-scroll-animate'),
+        topContentBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-content'),
+        landingSectionTop: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top'),
+        fadingTopBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-content--centered')
+    },
 
-        elements: {
-            contentBlocks: $('.landing-block'),
-            contentBlockFirst: $('.landing-block--top'),
-            contentBlockLast: $('.landing-block--bottom'),
-            landingSectionTop: $('.landing-section__top'),
-            actionButtonMain: $('.button--landing-main')
-        },
+    init: () => {
+        landingContent.animateTopContent();
 
-        init: () => {
-            landing_text.showInitialText();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll.animate-content', landingContent.animateContentOnScroll);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll', landingContent.fadeTopBlockOnScroll);
 
-            $(window).on('scroll.animate-text', landing_text.scrolling);
-            $(window).on('scroll', landing_text.scrollTextHide);
-            $(window).on('scroll', landing_text.toggleActionButtonView);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).resize();
+    },
 
-            if ($(document).scrollTop() !== 0) {
-                $(window).scroll();
+    animateTopContent: () => {
+        landingContent.elements.topContentBlock.addClass('animate');
+
+        setTimeout(() => {
+            landingContent.elements.topContentBlock.addClass('animate-end');
+        }, 700);
+    },
+
+    animateContentOnScroll: () => {
+        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
+              windowHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height();
+
+        landingContent.elements.onScrollAnimatedBlocks.each(function () {
+            const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+
+            if (scrolledHeight + windowHeight >= $this.offset().top + $this.height() / 2) {
+                $this.addClass('animate');
             }
-        },
+        });
 
-        showInitialText: () => {
-            landing_text.elements.contentBlockFirst.add(landing_text.elements.actionButtonMain).addClass('appear');
-
-            setTimeout(() => {
-                landing_text.elements.contentBlockFirst.add(landing_text.elements.actionButtonMain).addClass('appeared');
-            }, 700);
-        },
-
-        scrolling: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height();
-
-            landing_text.elements.contentBlocks.not('.landing-block--top').each(function () {
-                const $this = $(this);
-
-                if (scrolledHeight + windowHeight + 50 >= $this.offset().top) {
-                    $this.addClass('appear');
-                }
-            });
-
-            if (!landing_text.elements.contentBlocks.not('.appear').length) {
-                $(window).off('scroll.animate-text');
-            }
-        },
-
-        scrollTextHide: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  operationHeight = landing_text.elements.landingSectionTop.height() / 2,
-                  opacityValue = (1 - (scrolledHeight - operationHeight / 2) / operationHeight).toFixed(2);
-
-            landing_text.elements.contentBlockFirst.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
-        },
-
-        toggleActionButtonView: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height();
-
-            if (scrolledHeight + windowHeight >= landing_text.elements.contentBlockLast.offset().top) {
-                landing_text.elements.actionButtonMain.addClass('disappear');
-            } else {
-                landing_text.elements.actionButtonMain.removeClass('disappear');
-            }
+        if (!landingContent.elements.onScrollAnimatedBlocks.not('.animate').length) {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('scroll.animate-content');
         }
-    };
+    },
 
-    $(() => {
-        if ($('.landing-main').length) {
-            landing_text.init();
-        }
-    });
-})(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+    fadeTopBlockOnScroll: () => {
+        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
+              fadingHeight = landingContent.elements.landingSectionTop.height() / 2,
+              opacityValue = (1 - (scrolledHeight - fadingHeight / 2) / fadingHeight).toFixed(2);
+
+        landingContent.elements.fadingTopBlock.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
+    }
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper').length) {
+        landingContent.init();
+    }
+});
 
 /***/ }),
 /* 3 */
@@ -10589,130 +10572,152 @@ var _this = this;
 
 
 
-($ => {
+const landingNotify = {
 
-    const landingV2 = {
+    elements: {
+        topNotifyBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--top').add('.notify-text'),
+        notifyFloatingForm: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--head'),
+        fakeNotifyButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify').not('.fake-notify--toggler'),
+        notifyFloatingButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify--toggler')
+    },
 
-        elements: {
-            animatedBlocks: $('.landing-2__image').add('.landing-2__title').add('.landing-2__cut').add('.landing-info-block').add('.notify-text').add('.notify-form--main').add('.landing-2__bottom-content').add('.landing-2__bottom-title').add('.landing-2__bottom-cut'),
-            notifyFloatingForm: $('.notify-form--head'),
-            notifyFloatingButton: $('.fake-notify--toggler'),
-            fakeNotifyButton: $('.fake-notify').not('.fake-notify--toggler'),
-            bigTitle: $('.landing-2__bottom-title'),
-            bottomCut: $('.landing-2__bottom-cut'),
-            bottomBg: $('.landing-2__bottom-bg')
-        },
+    init: () => {
+        landingNotify.animateTopForm();
 
-        init: function () {
-            $(window).on('resize', landingV2.setBottomCutSize);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll', landingNotify.toggleNotifyGoTo);
 
-            $(window).on('scroll.animate-content-2', landingV2.animateContent);
-            $(window).on('scroll', landingV2.toggleNotifyGoTo);
+        landingNotify.elements.fakeNotifyButton.on('click', landingNotify.notifyTriggerSubmit);
 
-            $(window).scroll();
-            $(window).resize();
+        landingNotify.elements.notifyFloatingButton.on('click', landingNotify.notifyFormToggle);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', landingNotify.hideFloatingForm);
 
-            landingV2.elements.fakeNotifyButton.on('click', landingV2.notifyTriggerSubmit);
-            landingV2.elements.notifyFloatingButton.on('click', landingV2.notifyFormToggle);
-            $(document).on('click', landingV2.hideFloatingForm);
-        },
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
+    },
 
-        setBottomCutSize: () => {
-            const bigTitleSize = landingV2.elements.bigTitle.height();
+    animateTopForm: () => {
+        landingNotify.elements.topNotifyBlock.addClass('animate');
+    },
 
-            landingV2.elements.bottomCut.height(bigTitleSize);
-            landingV2.elements.bottomBg.attr('style', 'top: ' + bigTitleSize + 'px;');
-        },
+    toggleNotifyGoTo: () => {
+        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
+              lastBlock = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-block').last(),
+              maxVisibleHeight = lastBlock.offset().top;
 
-        animateContent: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height();
-
-            landingV2.elements.animatedBlocks.each(function () {
-                const $this = $(this);
-
-                if (scrolledHeight + windowHeight + $this.height() / 2 >= $this.offset().top) {
-                    $this.addClass('animate');
-                }
-            });
-
-            if (!landingV2.elements.animatedBlocks.not('.animate').length) {
-                $(window).off('scroll.animate-content-2');
-            }
-        },
-
-        toggleNotifyGoTo: () => {
-            const scrolledHeight = $(document).scrollTop();
-
-            if ($(document).width() < 768) {
-                if (scrolledHeight >= $(window).height()) {
-                    landingV2.elements.notifyFloatingForm.addClass('appear toggled');
-                } else {
-                    landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
-                }
-                return;
-            }
-
-            if (scrolledHeight >= $(window).height() && scrolledHeight < $('.landing-info-block--4').offset().top) {
-                landingV2.elements.notifyFloatingForm.addClass('appear');
+        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).width() < 768) {
+            if (scrolledHeight >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
+                landingNotify.elements.notifyFloatingForm.addClass('animate toggled');
             } else {
-                landingV2.elements.notifyFloatingForm.removeClass('appear toggled');
+                landingNotify.elements.notifyFloatingForm.removeClass('animate toggled');
             }
-        },
-
-        notifyFormToggle: function (e) {
-            e.preventDefault();
-
-            const $this = $(this),
-                  $thisForm = $this.closest('.notify-form');
-
-            if ($thisForm.hasClass('toggled')) {
-                $this.siblings('input[type="submit"]').trigger('click');
-            } else {
-                $this.closest('.notify-form').addClass('toggled');
-            }
-        },
-
-        hideFloatingForm: function (e) {
-            if (landingV2.elements.notifyFloatingForm.hasClass('toggled') && !landingV2.elements.notifyFloatingForm.is(e.target) && landingV2.elements.notifyFloatingForm.has(e.target).length === 0) {
-                landingV2.elements.notifyFloatingForm.removeClass('toggled');
-            }
-        },
-
-        notifyTriggerSubmit: e => {
-            e.preventDefault();
-            $(_this).siblings('input[type="submit"]').trigger('click');
+            return;
         }
-    };
 
-    $(window).on('load', () => {
-        if ($('.landing-section--2').length) {
-            landingV2.init();
+        if (scrolledHeight >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height() && scrolledHeight < maxVisibleHeight) {
+            landingNotify.elements.notifyFloatingForm.addClass('animate');
+        } else {
+            landingNotify.elements.notifyFloatingForm.removeClass('animate toggled');
         }
-    });
-})(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+    },
+
+    notifyFormToggle: function (e) {
+        e.preventDefault();
+
+        const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
+              $thisForm = $this.closest('.notify-form');
+
+        if ($thisForm.hasClass('toggled')) {
+            $this.siblings('input[type="submit"]').trigger('click');
+        } else {
+            $this.closest('.notify-form').addClass('toggled');
+        }
+    },
+
+    hideFloatingForm: e => {
+        if (landingNotify.elements.notifyFloatingForm.hasClass('toggled') && !landingNotify.elements.notifyFloatingForm.is(e.target) && landingNotify.elements.notifyFloatingForm.has(e.target).length === 0) {
+            landingNotify.elements.notifyFloatingForm.removeClass('toggled');
+        }
+    },
+
+    notifyTriggerSubmit: e => {
+        e.preventDefault();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(_this).siblings('input[type="submit"]').trigger('click');
+    }
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper').length) {
+        landingNotify.init();
+    }
+});
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+const landingV2 = {
+
+    elements: {
+        topBanner: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-banner'),
+        bottomTitle: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-title'),
+        bottomCut: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-cut'),
+        bottomBackgroundFill: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-bg')
+    },
+
+    init: () => {
+        landingV2.animateTopBanner();
+
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('resize', landingV2.setBottomCutSize);
+
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).resize();
+    },
+
+    setBottomCutSize: () => {
+        const bottomTitleSize = landingV2.elements.bottomTitle.height();
+
+        landingV2.elements.bottomCut.height(bottomTitleSize);
+        landingV2.elements.bottomBackgroundFill.attr('style', 'top: ' + bottomTitleSize + 'px;');
+    },
+
+    animateTopBanner: () => {
+        landingV2.elements.topBanner.addClass('animate');
+    }
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', () => {
+    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper--v2').length) {
+        landingV2.init();
+    }
+});
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_css__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_css__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_landing_text_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_landing_cars_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_landing_v2_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_landing_content_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_landing_v2_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_landing_notify__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_landing_cars_js__ = __webpack_require__(1);
 // CSS imports
 
 
 // JS imports
+
 
 
 

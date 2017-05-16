@@ -1,0 +1,3 @@
+.on-scroll-animate {
+    @apply --scroll-slide-in;
+}

@@ -8,80 +8,142 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
+<main class="landing-wrapper landing-wrapper--v1">
+    <div class="container--full">
+        <!-- Header -->
+        <header class="site-header">
+            <h2 class="site-title">Hulq</h2>
+        </header>
+        <div class="header-right">
+            <form action="#" class="h_float-left notify-form notify-form--head">
+                <div class="input-container">
+                    <input type="email" placeholder="Email address">
+                </div>
+                <input type="submit" value="Notify me" class="h_hidden">
+                <a href="#" class="fake-notify fake-notify--toggler">
+                    Notify me
+                    <img src="assets/images/arrow_back.svg" alt="go">
+                </a>
+            </form>
+            <span>Share</span><img src="./assets/images/landing/share.svg" alt="Share" class="share-icon">
         </div>
-    </header>
-    <main class="landing-section landing-main">
-        <div class="container--full">
-            <header class="site-header">
-                <h2 class="site-title">Hulq</h2>
-            </header>
-            <div class="car-landing car-landing--center">
-                <img src="./assets/images/audi_e-tron.png" alt="Audi E-tron">
-            </div>
-            <div class="car-landing car-landing--yellow">
-                <img src="./assets/images/rr.png" alt="RR">
-            </div>
-            <div class="car-landing car-landing--white">
-                <img src="./assets/images/ford.png" alt="Ford">
-            </div>
-            <div class="car-landing car-landing--red">
-                <img src="./assets/images/red.png" alt="Audi">
-            </div>
-            <div class="car-landing car-landing--black">
-                <img src="./assets/images/black.png" alt="Black Car">
-            </div>
-            <div class="car-landing car-landing--beige">
-                <img src="./assets/images/bmw.png" alt="BMW">
-            </div>
-            <div class="landing-section__top">
-                <div class="h_text-center h_align-center landing-block landing-block--top">
-                    <h1>Save big</h1>
-                    <h6>on your next lease... It only takes minutes</h6>
-                    <p>
-                        Submit your offer. Let dealers compete. Hulq puts power in your hands
-                    </p>
-                </div>
-            </div>
-            <a href="#" class="h_align-center button button--primary button--landing-main">Let's go</a>
-            <div class="col-7 landing-block landing-block--2">
-                <h5>First of all</h5>
-                <h3>Choose from all popular car brands divided in five body type categories</h3>
+
+        <!-- Cars -->
+        <div class="car-landing car-landing--center">
+            <img src="./assets/images/audi_e-tron.png" alt="Audi E-tron">
+        </div>
+        <div class="car-landing car-landing--yellow">
+            <img src="./assets/images/rr.png" alt="RR">
+        </div>
+        <div class="car-landing car-landing--white">
+            <img src="./assets/images/ford.png" alt="Ford">
+        </div>
+        <div class="car-landing car-landing--red">
+            <img src="./assets/images/red.png" alt="Audi">
+        </div>
+        <div class="car-landing car-landing--black">
+            <img src="./assets/images/black.png" alt="Black Car">
+        </div>
+        <div class="car-landing car-landing--beige">
+            <img src="./assets/images/bmw.png" alt="BMW">
+        </div>
+
+        <!-- Top section -->
+        <div class="landing-section__top landing-section__top--centered">
+            <div class="h_text-center landing-section__top-content landing-section__top-content--centered on-load-animate">
+                <h2>Save big</h2>
+                <h6>on your next lease... It only takes minutes</h6>
                 <p>
-                    Find what you need easily, using the quick navigation among screens that we
-                    divided into 28 categories depending on their purpose and characteristics.
+                    Submit your offer. Let dealers compete. Hulq puts power in your hands
                 </p>
-            </div>
-            <div class="col-7 landing-block landing-block--3">
-                <h5>Next step</h5>
-                <h3>Build your car lorem ipsum dolorlorem</h3>
-                <p>
-                    Find what you need easily, using the quick navigation among screens that we
-                    divided into 28 categories depending on their purpose and characteristics.
-                </p>
-            </div>
-            <div class="col-7 landing-block landing-block--4">
-                <h5>Then</h5>
-                <h3>Calculate your lease options lorem ipsum dolor auret at ease</h3>
-                <p>
-                    Find what you need easily, using the quick navigation among screens that we
-                    divided into 28 categories depending on their purpose and characteristics.
-                </p>
-            </div>
-            <div class="landing-section__bottom">
-                <div class="h_text-center h_align-center landing-block landing-block--bottom">
-                    <h2 class="h_align-center col-5">Find your car</h2>
-                    <p class="h_align-center col-7">
-                        Search by brand, body type or by things you want.<br>
-                        We'll find inventory to match.
-                    </p>
-                    <a href="#" class="button button--primary button--landing-secondary">Let's go</a>
-                    <a href="#" class="button button--primary button--landing-secondary">Let's go</a>
-                </div>
             </div>
         </div>
-    </main>
+        <div class="notify-text notify-text--column notify-text--column-top on-load-animate">
+            <img src="./assets/images/landing/rocket.svg" alt="Launch">
+            <h5>Launching soon!</h5>
+            <span>Enter your email for priority access</span>
+        </div>
+        <form action="#" class="h_align-center notify-form notify-form--top on-load-animate">
+            <div class="input-container">
+                <input type="email" placeholder="Email address">
+            </div>
+            <input type="submit" value="Notify me" class="h_hidden">
+            <a href="#" class="fake-notify">Notify me <img src="assets/images/arrow_back.svg" alt="go"></a>
+        </form>
+
+        <!-- Middle section -->
+        <div class="landing-section__middle landing-section__middle--spaced">
+            <div class="landing-block landing-block--number on-scroll-animate">
+                <h5 class="block-title-number block-title-number--red">1</h5>
+                <h3>Choose Your Ride</h3>
+                <p>
+                    Use our car builder to evaluate and select options for your next lease. Hulq is the only platform
+                    that lets you quickly explore options, shop pricing, compare models across brands, and review
+                    up-to-date specials in one place.
+                </p>
+            </div>
+            <div class="landing-block landing-block--number on-scroll-animate">
+                <h5 class="block-title-number block-title-number--teal">2</h5>
+                <h3>Submit Your Offer</h3>
+                <p>
+                    Our live price calculator gives you transparent, up-to-the-moment pricing information on your
+                    desired vehicle, so you won’t need to wait for a finance manager in order to see the final price.
+                    Hulq gives you the power and tools to make an informed offer in just minutes.
+                </p>
+            </div>
+            <div class="landing-block landing-block--number on-scroll-animate">
+                <h5 class="block-title-number block-title-number--red">3</h5>
+                <h3>Let Dealers Compete</h3>
+                <p>
+                    With Hulq, you don’t have to spend your busy days price-shopping all over town. Our network of
+                    dealers will compete to send you the most aggressive offers, giving you the best possible lease
+                    options in less than 60 minutes. Now go enjoy your lunch break!
+                </p>
+            </div>
+            <div class="landing-block landing-block--number on-scroll-animate">
+                <h5 class="block-title-number block-title-number--teal">4</h5>
+                <h3>Make Your Choice</h3>
+                <p>
+                    The power is in your hands. Evaluate transparently priced, no-hidden-fee offers from our certified
+                    dealers and pick the lease term that's right for you. Accept online or visit your chosen dealer to
+                    finalize the deal. It’s that easy!
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom section -->
+        <div class="h_text-center landing-section__bottom">
+            <div class="landing-section__bottom-content on-scroll-animate">
+                <h2>Don't miss our launch!</h2>
+                <p class="bright">Enter your email to be notified the moment we go live!</p>
+                <form action="#" class="h_align-center notify-form">
+                    <div class="input-container">
+                        <input type="email" placeholder="Email address">
+                    </div>
+                    <input type="submit" value="Notify me" class="h_hidden">
+                    <a href="#" class="fake-notify">Notify me <img src="assets/images/arrow_back.svg" alt="go"></a>
+                </form>
+            </div>
+            <h1 class="landing-section__bottom-title landing-section__bottom-title--red on-scroll-animate">
+                <span class="landing-section__bottom-title__text">Hulq</span>
+                <span class="landing-section__bottom-title__baseline"></span>
+            </h1>
+        </div>
+
+        <!-- Footer -->
+        <footer class="landing__footer landing__footer--fit">
+            <div class="copyright-block h_float-left">
+                &copy; 2017 Hulq. All rights reserved. Privacy Policy
+            </div>
+            <div class="social-block h_float-right">
+                Stay connected
+                <a href="#"><img src="./assets/images/landing/facebook.svg" alt="FaceBook"></a>
+                <a href="#"><img src="./assets/images/landing/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="./assets/images/landing/googleplus.svg" alt="Google Plus"></a>
+            </div>
+        </footer>
+    </div>
+</main>
 <script src="./assets/bundle.js"></script>
 </body>
 </html>

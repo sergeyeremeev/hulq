@@ -4,21 +4,7 @@
 }
 
 .landing-info-block {
-    overflow: hidden;
-    position: relative;
-    transition: transform 1.2s ease, opacity 1s ease;
-    opacity: 0;
-    transform: translateY(70%);
-    will-change: transform;
 
-    &.animate {
-        opacity: 1;
-        transform: translateY(0);
-
-        & .timer-arrow__container img {
-            animation: rotate-arrow 10s;
-        }
-    }
 
     @media (--mobile) {
         display: flex;
@@ -26,150 +12,6 @@
         clear: both;
         overflow: visible;
         padding: 0 16px;
-    }
-
-    &__image {
-        width: 40%;
-        height: auto;
-        margin-left: 5%;
-
-        & img {
-            width: 100%;
-            height: auto;
-        }
-
-        &--timer {
-            width: 30%;
-            margin-left: 10%;
-            position: relative;
-
-            & .timer-arrow__container {
-                position: absolute;
-                width: 70%;
-                top: calc(33%);
-                left: 50%;
-                transform: translateX(-50%);
-
-                & img {
-                    will-change: transform;
-                }
-            }
-
-            @media (--mobile) {
-                margin-top: 40px !important;
-            }
-        }
-
-        &--car {
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (--tablet-screen) {
-            margin-left: 2%;
-
-            &--timer {
-                margin-left: 7%;
-            }
-        }
-
-        @media (--mobile) {
-            left: 0 !important;
-            order: 2;
-            width: 95%;
-            margin: 0 auto;
-
-            &--timer {
-                width: 75%;
-            }
-
-            &--car {
-                width: 50%;
-                margin: 50px auto;
-            }
-        }
-    }
-
-    &__text {
-        max-width: 40%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateY(-50%);
-
-        & h3 {
-            font-size: 45px;
-            font-weight: 400;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        & p {
-            font-size: 20px;
-            line-height: 1.6;
-            color: var(--color-gray-light);
-        }
-
-        @media (--tablet-screen) {
-
-            & h3 {
-                font-size: 28px;
-                margin-bottom: 10px;
-            }
-
-            & p {
-                font-size: 15px;
-            }
-        }
-
-        @media (--mobile) {
-            order: 1;
-            width: 100%;
-            max-width: none;
-            position: static;
-            transform: none;
-
-            & h3 {
-                font-size: 28px;
-                margin-bottom: 15px;
-                position: relative;
-
-                &::before {
-                    content: '';
-                    width: 80px;
-                    height: 4px;
-                    border-radius: 5px;
-                    background: var(--color-accent-lighter);
-                    position: absolute;
-                    left: 0;
-                    top: -20px;
-                }
-            }
-
-            & p {
-                font-size: 16px;
-            }
-        }
-    }
-
-    &--reversed {
-
-        & .landing-info-block__text {
-            left: 10%;
-
-            @media (--tablet-screen) {
-                left: 7%;
-            }
-
-            @media (--mobile) {
-                left: 16px;
-            }
-        }
-
-        & .landing-info-block__image {
-            position: relative;
-            left: 50%;
-        }
     }
 
     &--1 {
@@ -206,145 +48,23 @@
     &--4 {
         position: relative;
         z-index: 1;
-
-        & .landing-info-block__text {
-            top: 0;
-            transform: none;
-        }
-
-        & .landing-info-block__image {
-            width: 30%;
-            left: 55%;
-
-            @media (--mobile) {
-                width: 70%;
-                margin: 50px auto;
-            }
-        }
     }
 }
 
 .landing-2__bottom {
-    margin: -400px 0 -1px;
-    padding-bottom: 80px;
-    position: relative;
-    overflow: hidden;
 
-    & h1 {
-        font-size: 35vw;
-        letter-spacing: -2px;
-        font-family: var(--font-heading);
-        color: #fff;
-        position: relative;
-        transition: transform 1.2s ease, opacity 1s ease;
-        opacity: 0;
-        transform: translateY(70%);
-        will-change: transform;
 
-        &.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 
-    &-social {
-        display: none;
-        position: relative;
-        z-index: 1;
-        padding-bottom: 30px;
-        width: calc(100% + 32px);
-        margin-left: -16px;
-        border-bottom: 1px solid var(--color-blue-medium);
 
-        @media (--mobile) {
-            display: block;
-        }
-
-        & span {
-            display: block;
-            color: #fff;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-    }
 
     &-content {
-        transition: transform 1.2s ease, opacity 1s ease;
-        opacity: 0;
-        transform: translateY(70%);
-        will-change: transform;
-
-        &.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         @media (--mobile) {
             padding-top: 25px;
         }
     }
 
-    & h2 {
-        font-size: 48px;
-        color: #fff;
-        margin-bottom: 20px;
-        position: relative;
-    }
 
-    & h3 {
-        font-size: 24px;
-        line-height: 1.6;
-        color: var(--color-blue-dark);
-        margin-bottom: 45px;
-        position: relative;
-    }
-
-    &-cut {
-        position: absolute;
-        top: 100px;
-        left: 0;
-        height: 700px; /* default height for wide screens */
-        width: 100%;
-        background: var(--color-red);
-        transform-origin: left top;
-        transform: skewY(10deg);
-        backface-visibility: hidden;
-        outline: 1px solid transparent;
-
-        @media (--medium-screen) {
-            top: 50px;
-        }
-
-        @media (--tablet-screen) {
-            top: 35px;
-        }
-
-        @media (--mobile) {
-            top: 20px;
-        }
-    }
-
-    &-bg {
-        position: absolute;
-        top: 700px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: var(--color-red);
-    }
-
-    @media (--large-screen) {
-        margin: -320px 0 -1px;
-    }
-
-    @media (--medium-screen) {
-        margin: -175px 0 -1px;
-    }
-
-    @media (--tablet-screen) {
-        margin: -135px 0 -1px;
-    }
 
     @media (--mobile) {
         padding: 0 16px 60px;

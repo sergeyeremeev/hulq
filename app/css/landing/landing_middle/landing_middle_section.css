@@ -1,0 +1,8 @@
+.landing-section__middle {
+    position: relative;
+    z-index: 1;
+
+    &--spaced {
+        padding-top: 25vh;
+    }
+}

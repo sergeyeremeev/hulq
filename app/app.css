@@ -9,10 +9,43 @@
 
 @import './css/layout/header.css';
 
-@import './css/landing/layout.css';
-@import './css/landing/blocks.css';
+/* ========== LANDING STYLES ========== */
+@import './css/landing/wrapper.css';
+
+@import './css/landing/header.css';
+@import './css/landing/footer.css';
+
+/* Landing top section */
+@import './css/landing/landing_top/landing_top_section.css';
+@import './css/landing/landing_top/landing_top_content.css';
+@import './css/landing/landing_top/landing_top_banner.css';
+@import './css/landing/landing_top/landing_top_container.css';
+@import './css/landing/landing_top/landing_top_cut.css';
+
+/* Landing middle section */
+@import './css/landing/landing_middle/landing_middle_section.css';
+
+/* Landing bottom section */
+@import './css/landing/landing__bottom/landing_bottom_section.css';
+@import './css/landing/landing__bottom/landing_bottom_content.css';
+@import './css/landing/landing__bottom/landing_bottom_title.css';
+@import './css/landing/landing__bottom/landing_bottom_cut.css';
+@import './css/landing/landing__bottom/social_block.css';
+
+/* Landing blocks */
+@import './css/landing/content_blocks/blocks.css';
+@import './css/landing/content_blocks/block_number/number_block.css';
+@import './css/landing/content_blocks/block_number/number_block_title.css';
+@import './css/landing/content_blocks/block_image/image_block.css';
+@import './css/landing/content_blocks/block_image/image_block_image.css';
+@import './css/landing/content_blocks/block_image/image_block_text.css';
+
+/* Landing cars */
 @import './css/landing/cars.css';
 
-@import './css/landing/v2/layout.css';
-@import './css/landing/v2/blocks.css';
-@import 'css/landing/notify_form.css';
+/* Landing animations */
+@import './css/landing/scroll_animations.css';
+
+/* Landing notify form */
+@import './css/landing/notify_form/notify_text.css';
+@import './css/landing/notify_form/notify_form.css';

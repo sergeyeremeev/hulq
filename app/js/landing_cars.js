@@ -96,7 +96,7 @@ import jQuery from 'jquery';
             const scrolledHeight = $(document).scrollTop(),
                 windowHeight = $(window).height(),
                 segmentHeight = $(window).height() / 3,
-                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 3;
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 2;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
@@ -112,7 +112,7 @@ import jQuery from 'jquery';
         animateBlackCar: () => {
             const scrolledHeight = $(document).scrollTop(),
                 segmentHeight = $(window).height() / 3,
-                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 4;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight * 125,
@@ -137,7 +137,7 @@ import jQuery from 'jquery';
             const scrolledHeight = $(document).scrollTop(),
                 windowHeight = $(window).height(),
                 segmentHeight = $(window).height() / 3,
-                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 9;
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 5;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
@@ -152,7 +152,7 @@ import jQuery from 'jquery';
     };
 
     $(() => {
-        if ($('.landing-main').length) {
+        if ($('.landing-main').length || $('.landing-wrapper--v1').length) {
             landing_cars.init();
         }
     });

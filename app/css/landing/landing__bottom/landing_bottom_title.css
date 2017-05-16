@@ -1,0 +1,32 @@
+.landing-section__bottom-title {
+    @apply --scroll-slide-in;
+    position: relative;
+    font-family: var(--font-heading);
+    font-size: 35vw;
+    line-height: 1;
+    letter-spacing: -2px;
+
+    &__text {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__baseline {
+        position: absolute;
+        left: 0;
+        bottom: 0.26em;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: var(--color-gray-opaque);
+    }
+
+    &--red {
+        color: var(--color-red-light);
+    }
+
+    &--white {
+        color: #fff;
+    }
+}
