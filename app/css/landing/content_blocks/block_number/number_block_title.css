@@ -13,4 +13,13 @@
     &--teal {
         color: var(--color-teal-opaque);
     }
+
+    @media (--tablet-screen) {
+        font-size: 150px;
+    }
+
+    @media (--mobile) {
+        left: -20px;
+        font-size: 80px;
+    }
 }

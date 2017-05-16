@@ -6,7 +6,7 @@ const landingV2 = {
         topBanner: $('.landing-section__top-banner'),
         bottomTitle: $('.landing-section__bottom-title'),
         bottomCut: $('.landing-section__bottom-cut'),
-        bottomBackgroundFill: $('.landing-section__bottom-bg'),
+        bottomBackgroundFill: $('.landing-section__bottom-bg-fill'),
     },
 
     init: () => {

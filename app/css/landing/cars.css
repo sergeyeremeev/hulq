@@ -35,4 +35,39 @@
         top: 100%;
         transform: translate(-25%, 0);
     }
+
+    @media (--medium-screen) {
+
+        & img {
+            transform: scale(0.8);
+        }
+    }
+
+    @media (--tablet-screen) {
+
+        & img {
+            transform: scale(0.6) translateY(10%);
+        }
+    }
+
+    @media (--mobile) {
+
+        &--center {
+            width: 148px;
+
+            & img {
+                width: 100%;
+                height: auto;
+                transform: translateY(-10%);
+            }
+        }
+
+        &--yellow,
+        &--black,
+        &--white,
+        &--red,
+        &--beige {
+            display: none;
+        }
+    }
 }

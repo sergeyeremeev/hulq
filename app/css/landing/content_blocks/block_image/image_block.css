@@ -3,18 +3,42 @@
     position: relative;
     overflow: hidden;
 
-    &.animate {
-
-        & .timer-arrow__container img {
-            animation: rotate-arrow 10s; /* TODO: move to separate file */
-        }
-    }
-
     &:nth-child(2) {
         margin-bottom: 50px;
     }
 
     &:nth-child(3) {
         margin-bottom: 150px;
+    }
+
+    @media (--tablet-screen) {
+
+        &:nth-child(2) {
+            margin-bottom: 30px;
+        }
+
+        &:nth-child(3) {
+            margin-bottom: 100px;
+        }
+    }
+
+    @media (--mobile) {
+        display: flex;
+        flex-direction: column;
+        clear: both;
+        overflow: visible;
+        padding: 0 16px;
+
+        &:nth-child(1) {
+            margin-bottom: 40px;
+        }
+
+        &:nth-child(2) {
+            margin-bottom: 50px;
+        }
+
+        &:nth-child(3) {
+            margin-bottom: 100px;
+        }
     }
 }

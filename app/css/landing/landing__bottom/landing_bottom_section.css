@@ -1,6 +1,13 @@
 .landing-section__bottom {
     overflow: hidden;
 
+    &--v1 {
+
+        @media (--mobile) {
+            padding-bottom: 50px;
+        }
+    }
+
     &--v2 {
         margin: -260px 0 -1px;
         position: relative;
@@ -15,7 +22,12 @@
         }
 
         @media (--tablet-screen) {
-            margin: -135px 0 -1px;
+            margin: -90px 0 -1px;
+        }
+
+        @media (--mobile) {
+            margin: -20px 0 -1px;
+            padding: 0 16px 60px;
         }
     }
 }

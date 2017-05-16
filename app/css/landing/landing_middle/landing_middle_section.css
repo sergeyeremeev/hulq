@@ -5,4 +5,8 @@
     &--spaced {
         padding-top: 25vh;
     }
+
+    @media (--mobile) {
+        padding-top: 50px;
+    }
 }

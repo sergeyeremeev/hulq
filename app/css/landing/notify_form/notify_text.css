@@ -51,8 +51,6 @@
     }
 
     @media (--tablet-screen) {
-        left: 7%;
-        padding-left: 60px;
 
         & img {
             width: 42px;
@@ -67,13 +65,17 @@
             font-size: 14px;
             line-height: 24px;
         }
+
+        &--row {
+            left: 7%;
+            padding-left: 60px;
+        }
     }
 
     @media (--mobile) {
         left: 0;
         padding-left: 0;
         text-align: center;
-        margin: 0;
 
         & img {
             width: 42px;

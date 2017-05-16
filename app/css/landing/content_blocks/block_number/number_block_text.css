@@ -1,0 +1,39 @@
+.landing-block--number {
+
+    & h3 {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 16px;
+        font-weight: 400;
+        font-size: 45px;
+        color: #fff;
+    }
+
+    & p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: color(#fff alpha(50%));
+    }
+
+    @media (--tablet-screen) {
+
+        & h3 {
+            font-size: 32px;
+        }
+
+        & p {
+            font-size: 16px;
+        }
+    }
+
+    @media (--mobile) {
+
+        & h3 {
+            font-size: 28px;
+        }
+
+        & p {
+            font-size: 16px;
+        }
+    }
+}

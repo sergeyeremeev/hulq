@@ -19,92 +19,24 @@
         margin-bottom: -56px;
     }
 
-    &--main {
-
-        z-index: 2;
-        transition: transform 1.2s ease, opacity 1.2s ease;
-        opacity: 0;
-        transform: translateY(70px);
-        will-change: transform;
-
-        @media (--tablet-screen) {
-            top: -44px;
-            margin-bottom: -44px;
-        }
-
-        @media (--mobile) {
-            left: 16px;
-            top: 16px;
-            margin-bottom: 90px;
-        }
-    }
-
     &--head {
         position: relative;
         margin-right: 20px;
+        z-index: 3;
         opacity: 0;
         transition: opacity 0.6s ease;
-        z-index: 3;
 
         &.animate {
             opacity: 1;
         }
 
-        & input[type="email"] {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        &.toggled {
-
-            & input[type="email"] {
-                transform: translateX(0);
-            }
-        }
-
         @media (--mobile) {
-            margin-right: 0;
             left: 16px;
+            margin-right: 0;
         }
     }
 
-    & .input-container {
-        height: 100%;
-        width: calc(100% - 80px);
-        overflow: hidden;
-    }
-
-    & input[type="email"] {
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        border-radius: 36px;
-        border: none;
-        padding: 0 92px 0 36px;
-        font-size: 18px;
-    }
-
-    & ::-webkit-input-placeholder {
-        font-size: 18px;
-        color: var(--color-gray-medium);
-    }
-
-    & :-moz-placeholder {
-        font-size: 18px;
-        color: var(--color-gray-medium);
-    }
-
-    & ::-moz-placeholder {
-        font-size: 18px;
-        color: var(--color-gray-medium);
-    }
-
-    & :-ms-input-placeholder {
-        font-size: 18px;
-        color: var(--color-gray-medium);
-    }
-
-    &.h_align-center {
+    &.h_align-center { /* TODO: check if needed */
 
         @media (--mobile) {
             transform: none;
@@ -115,26 +47,9 @@
         width: 300px;
         height: 44px;
 
-        & input[type="email"] {
-            font-size: 16px;
-            padding: 0 82px 0 24px;
-            border-radius: 22px;
-        }
-
-        & ::-webkit-input-placeholder {
-            font-size: 16px;
-        }
-
-        & :-moz-placeholder {
-            font-size: 16px;
-        }
-
-        & ::-moz-placeholder {
-            font-size: 16px;
-        }
-
-        & :-ms-input-placeholder {
-            font-size: 16px;
+        &--row {
+            top: -46px;
+            margin-bottom: -46px;
         }
     }
 
@@ -146,82 +61,10 @@
             display: none;
         }
 
-        & .input-container {
-            width: calc(100% - 50px);
-        }
-
-        & input[type="email"] {
-            font-size: 16px;
-            padding: 0 74px 0 24px;
-            border-radius: 20px;
-        }
-
-        & ::-webkit-input-placeholder {
-            font-size: 14px;
-        }
-
-        & :-moz-placeholder {
-            font-size: 14px;
-        }
-
-        & ::-moz-placeholder {
-            font-size: 14px;
-        }
-
-        & :-ms-input-placeholder {
-            font-size: 14px;
-        }
-    }
-}
-
-.fake-notify,
-.notify-go-to {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-    width: 160px;
-    height: 56px;
-    line-height: 56px;
-    text-align: center;
-    background: var(--color-accent-lighter);
-    color: var(--color-blue-medium);
-    border-radius: 36px;
-    font-size: 18px;
-    font-weight: 600;
-    padding-right: 20px;
-
-    & img {
-        height: 16px;
-        width: auto;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-    }
-
-    @media (--tablet-screen) {
-        width: 120px;
-        height: 44px;
-        line-height: 44px;
-        font-size: 14px;
-
-        & img {
-            height: 13px;
-            right: 15px;
-        }
-    }
-
-    @media (--mobile) {
-        width: 100px;
-        height: 42px;
-        line-height: 42px;
-        font-size: 14px;
-        transform: none;
-        padding-right: 0;
-
-        & img {
-            display: none;
+        &--row {
+            left: 16px;
+            top: 16px;
+            margin-bottom: 90px;
         }
     }
 }

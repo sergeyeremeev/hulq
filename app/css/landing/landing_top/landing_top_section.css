@@ -9,4 +9,13 @@
     &--centered {
         height: 100vh;
     }
+
+    @media (--mobile) {
+
+        &--bottom-aligned {
+            height: auto;
+            margin-bottom: 10px;
+            padding-top: 30%;
+        }
+    }
 }

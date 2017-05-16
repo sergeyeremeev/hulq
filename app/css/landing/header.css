@@ -11,6 +11,7 @@
         font-weight: 600;
         line-height: 56px;
         color: #fff;
+        display: none; /* TODO: hidden until implemented */
     }
 
     & .share-icon {
@@ -18,6 +19,7 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
+        display: none; /* TODO: hidden until implemented */
     }
 
     @media (--tablet-screen) {

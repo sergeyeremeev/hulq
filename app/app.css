@@ -36,6 +36,7 @@
 @import './css/landing/content_blocks/blocks.css';
 @import './css/landing/content_blocks/block_number/number_block.css';
 @import './css/landing/content_blocks/block_number/number_block_title.css';
+@import './css/landing/content_blocks/block_number/number_block_text.css';
 @import './css/landing/content_blocks/block_image/image_block.css';
 @import './css/landing/content_blocks/block_image/image_block_image.css';
 @import './css/landing/content_blocks/block_image/image_block_text.css';
@@ -49,3 +50,5 @@
 /* Landing notify form */
 @import './css/landing/notify_form/notify_text.css';
 @import './css/landing/notify_form/notify_form.css';
+@import './css/landing/notify_form/notify_form_input.css';
+@import './css/landing/notify_form/notify_form_button.css';

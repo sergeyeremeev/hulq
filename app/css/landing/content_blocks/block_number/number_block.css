@@ -1,6 +1,5 @@
 .landing-block--number {
-    left: 15%;
-    width: 50%;
+    width: 45%;
     margin-bottom: 40vh;
 
     &:nth-child(odd) {
@@ -15,5 +14,38 @@
 
     &:last-child {
         margin-bottom: 50vh;
+    }
+
+    @media (--tablet-screen) {
+        width: 40%;
+
+        &:nth-child(odd) {
+            left: 10%;
+            padding-top: 80px;
+        }
+
+        &:nth-child(even) {
+            left: 50%;
+            padding-top: 100px;
+        }
+    }
+
+    @media (--mobile) {
+        width: calc(100% - 52px);
+        margin-bottom: 50px;
+
+        &:nth-child(odd) {
+            left: 36px;
+            padding-top: 40px;
+        }
+
+        &:nth-child(even) {
+            left: 36px;
+            padding-top: 50px;
+        }
+
+        &:last-child {
+            margin-bottom: 150px;
+        }
     }
 }

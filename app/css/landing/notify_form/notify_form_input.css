@@ -1,0 +1,107 @@
+.notify-form {
+
+    & .input-container {
+        height: 100%;
+        width: calc(100% - 80px);
+        overflow: hidden;
+    }
+
+    & input[type="email"] {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 36px;
+        border: none;
+        padding: 0 92px 0 36px;
+        font-size: 18px;
+    }
+
+    & ::-webkit-input-placeholder {
+        font-size: 18px;
+        color: var(--color-gray-medium);
+    }
+
+    & :-moz-placeholder {
+        font-size: 18px;
+        color: var(--color-gray-medium);
+    }
+
+    & ::-moz-placeholder {
+        font-size: 18px;
+        color: var(--color-gray-medium);
+    }
+
+    & :-ms-input-placeholder {
+        font-size: 18px;
+        color: var(--color-gray-medium);
+    }
+
+    &--head {
+
+        & input[type="email"] {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        &.toggled {
+
+            & input[type="email"] {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    @media (--tablet-screen) {
+
+        & input[type="email"] {
+            font-size: 16px;
+            padding: 0 82px 0 24px;
+            border-radius: 22px;
+        }
+
+        & ::-webkit-input-placeholder {
+            font-size: 16px;
+        }
+
+        & :-moz-placeholder {
+            font-size: 16px;
+        }
+
+        & ::-moz-placeholder {
+            font-size: 16px;
+        }
+
+        & :-ms-input-placeholder {
+            font-size: 16px;
+        }
+    }
+
+    @media (--mobile) {
+
+        & .input-container {
+            width: calc(100% - 50px);
+        }
+
+        & input[type="email"] {
+            font-size: 16px;
+            padding: 0 74px 0 24px;
+            border-radius: 20px;
+        }
+
+        & ::-webkit-input-placeholder {
+            font-size: 14px;
+        }
+
+        & :-moz-placeholder {
+            font-size: 14px;
+        }
+
+        & ::-moz-placeholder {
+            font-size: 14px;
+        }
+
+        & :-ms-input-placeholder {
+            font-size: 14px;
+        }
+    }
+}

@@ -29,4 +29,19 @@
     &--white {
         color: #fff;
     }
+
+    &--visible-mobile {
+        display: none;
+    }
+
+    @media (--mobile) {
+
+        &--red {
+            display: none;
+        }
+
+        &--visible-mobile {
+            display: block;
+        }
+    }
 }

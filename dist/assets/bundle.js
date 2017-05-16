@@ -10472,7 +10472,7 @@ return jQuery;
             const scrolledHeight = $(document).scrollTop(),
                   windowHeight = $(window).height(),
                   segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 5;
+                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
@@ -10665,7 +10665,7 @@ const landingV2 = {
         topBanner: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-banner'),
         bottomTitle: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-title'),
         bottomCut: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-cut'),
-        bottomBackgroundFill: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-bg')
+        bottomBackgroundFill: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-bg-fill')
     },
 
     init: () => {

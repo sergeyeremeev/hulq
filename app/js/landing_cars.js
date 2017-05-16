@@ -137,7 +137,7 @@ import jQuery from 'jquery';
             const scrolledHeight = $(document).scrollTop(),
                 windowHeight = $(window).height(),
                 segmentHeight = $(window).height() / 3,
-                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 5;
+                appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
 
             let scrolledFromStart = scrolledHeight - appearPoint,
                 scrolledPercent = scrolledFromStart / segmentHeight,
