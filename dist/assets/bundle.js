@@ -10379,11 +10379,16 @@ return jQuery;
             // starting from -80%, finishing after 2x window heights scrolled
 
             const scrolledHeight = $(document).scrollTop(),
+                  windowHeight = $(window).height(),
                   doubleWindowHeight = $(window).height() * 2,
-                  scrolledPercent = scrolledHeight / doubleWindowHeight * 40,
-                  transformValue = scrolledPercent > 40 ? -40 : scrolledPercent - 80;
+                  scrolledPercent = scrolledHeight / doubleWindowHeight * 35,
+                  transformValue = scrolledPercent > 35 ? -45 : scrolledPercent - 80;
 
-            landing_cars.elements.carCentral.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+            landing_cars.elements.carCentral.attr('style', 'transform: translate(-45%, ' + transformValue + '%);');
+
+            if (scrolledHeight + windowHeight > $(document).height() - 100) {
+                landing_cars.elements.carCentral.addClass('drive-away').removeAttr('style');
+            }
         },
 
         animateYellowCar: () => {
@@ -10575,7 +10580,9 @@ const landingNotify = {
     elements: {
         topNotifyBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--top').add('.notify-text'),
         notifyFloatingForm: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--head'),
+        notifyEmailField: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form').find('input[type="email"]'),
         fakeNotifyButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify').not('.fake-notify--toggler'),
+        notifyThankyouClose: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form__thank-you__close'),
         notifyFloatingButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify--toggler')
     },
 
@@ -10585,6 +10592,10 @@ const landingNotify = {
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll', landingNotify.toggleNotifyGoTo);
 
         landingNotify.elements.fakeNotifyButton.on('click', landingNotify.notifyTriggerSubmit);
+
+        landingNotify.elements.notifyEmailField.on('keyup touchend', landingNotify.notifyInputChange);
+
+        landingNotify.elements.notifyThankyouClose.on('click', landingNotify.closeNotifyThankyouMessage);
 
         landingNotify.elements.notifyFloatingButton.on('click', landingNotify.notifyFormToggle);
         __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', landingNotify.hideFloatingForm);
@@ -10624,7 +10635,7 @@ const landingNotify = {
               $thisForm = $this.closest('.notify-form');
 
         if ($thisForm.hasClass('toggled')) {
-            $this.siblings('input[type="submit"]').trigger('click');
+            landingNotify.notifyTriggerSubmit.call(landingNotify.elements.notifyFloatingButton, e);
         } else {
             $this.closest('.notify-form').addClass('toggled');
         }
@@ -10636,9 +10647,32 @@ const landingNotify = {
         }
     },
 
+    notifyInputChange: function () {
+        console.log(this);
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form').removeClass('invalid');
+    },
+
+    validateEmail: email => {
+        const pattern = /.+\@.+\..+/;
+        return pattern.test(email);
+    },
+
     notifyTriggerSubmit: function (e) {
         e.preventDefault();
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form').submit();
+
+        const $thisForm = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form'),
+              email = $thisForm.find('input[type="email"]').val();
+
+        if (landingNotify.validateEmail(email)) {
+            $thisForm.submit();
+            $thisForm.find('.notify-form__thank-you').addClass('animate');
+        } else {
+            $thisForm.addClass('invalid');
+        }
+    },
+
+    closeNotifyThankyouMessage: function () {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form__thank-you').hide();
     }
 };
 

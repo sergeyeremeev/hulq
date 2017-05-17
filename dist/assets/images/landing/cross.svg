@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44 (41411) - http://www.bohemiancoding.com/sketch -->
+    <title>buttons/cloce modal</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/close-grey-N" transform="translate(-14.000000, -14.000000)" fill="#8394A1">
+            <path d="M29,28 L29,9 L28,9 L28,28 L9,28 L9,29 L28,29 L28,48 L29,48 L29,29 L48,29 L48,28 L29,28 Z" id="buttons/cloce-modal" transform="translate(28.500000, 28.500000) rotate(45.000000) translate(-28.500000, -28.500000) "></path>
+        </g>
+    </g>
+</svg>

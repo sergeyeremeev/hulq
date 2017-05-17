@@ -1,5 +1,7 @@
 .landing-section__bottom-content {
+    position: relative;
     padding-bottom: 90px;
+    z-index: 2;
 
     & h2 {
         margin-bottom: 32px;

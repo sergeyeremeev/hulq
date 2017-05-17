@@ -50,6 +50,27 @@
         }
     }
 
+    @media (--large-screen) and (max-height: 767px) {
+
+        &--column-top img {
+            visibility: hidden;
+        }
+    }
+
+    @media (--medium-screen) and (max-height: 767px) {
+
+        &--column-top img {
+            visibility: hidden;
+        }
+    }
+
+    @media (--tablet-screen) and (max-height: 680px) {
+
+        &--column-top img {
+            visibility: hidden;
+        }
+    }
+
     @media (--tablet-screen) {
 
         & img {

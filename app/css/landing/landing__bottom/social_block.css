@@ -30,7 +30,7 @@
     }
 
     &.social-block--dark {
-        border-bottom: 1px solid var(--color-red-light);
+        border-bottom: 1px solid var(--color-gray-opaque);
     }
 
     &.social-block--bright {

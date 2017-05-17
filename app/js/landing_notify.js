@@ -5,7 +5,9 @@ const landingNotify = {
     elements: {
         topNotifyBlock: $('.notify-form--top').add('.notify-text'),
         notifyFloatingForm: $('.notify-form--head'),
+        notifyEmailField: $('.notify-form').find('input[type="email"]'),
         fakeNotifyButton: $('.fake-notify').not('.fake-notify--toggler'),
+        notifyThankyouClose: $('.notify-form__thank-you__close'),
         notifyFloatingButton: $('.fake-notify--toggler')
     },
 
@@ -15,6 +17,10 @@ const landingNotify = {
         $(window).on('scroll', landingNotify.toggleNotifyGoTo);
 
         landingNotify.elements.fakeNotifyButton.on('click', landingNotify.notifyTriggerSubmit);
+
+        landingNotify.elements.notifyEmailField.on('keyup touchend', landingNotify.notifyInputChange);
+
+        landingNotify.elements.notifyThankyouClose.on('click', landingNotify.closeNotifyThankyouMessage);
 
         landingNotify.elements.notifyFloatingButton.on('click', landingNotify.notifyFormToggle);
         $(document).on('click', landingNotify.hideFloatingForm);
@@ -54,7 +60,7 @@ const landingNotify = {
             $thisForm = $this.closest('.notify-form');
 
         if ($thisForm.hasClass('toggled')) {
-            $this.siblings('input[type="submit"]').trigger('click');
+            landingNotify.notifyTriggerSubmit.call(landingNotify.elements.notifyFloatingButton, e);
         } else {
             $this.closest('.notify-form').addClass('toggled');
         }
@@ -68,9 +74,32 @@ const landingNotify = {
         }
     },
 
+    notifyInputChange: function () {
+        console.log(this);
+        $(this).closest('.notify-form').removeClass('invalid');
+    },
+
+    validateEmail: (email) => {
+        const pattern = /.+\@.+\..+/;
+        return pattern.test(email);
+    },
+
     notifyTriggerSubmit: function (e) {
         e.preventDefault();
-        $(this).closest('.notify-form').submit();
+
+        const $thisForm = $(this).closest('.notify-form'),
+              email = $thisForm.find('input[type="email"]').val();
+
+        if (landingNotify.validateEmail(email)) {
+            $thisForm.submit();
+            $thisForm.find('.notify-form__thank-you').addClass('animate');
+        } else {
+            $thisForm.addClass('invalid');
+        }
+    },
+
+    closeNotifyThankyouMessage: function () {
+        $(this).closest('.notify-form__thank-you').hide();
     }
 };
 

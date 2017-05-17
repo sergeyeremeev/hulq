@@ -1,6 +1,7 @@
 .notify-form {
 
     & .input-container {
+        position: relative;
         height: 100%;
         width: calc(100% - 80px);
         overflow: hidden;
@@ -11,9 +12,21 @@
         height: 100%;
         background: #fff;
         border-radius: 36px;
-        border: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent;
         padding: 0 92px 0 36px;
         font-size: 18px;
+        transition: border-color 0.3s var(--standard);
+    }
+
+    &__error {
+        position: absolute;
+        bottom: -18px;
+        left: 38px;
+        font-size: 14px;
+        color: var(--color-red-light);
+        opacity: 0;
     }
 
     & ::-webkit-input-placeholder {
@@ -51,6 +64,17 @@
         }
     }
 
+    &.invalid {
+
+        & input[type="email"] {
+            border-color: var(--color-red-light);
+        }
+
+        & .notify-form__error {
+            opacity: 1;
+        }
+    }
+
     @media (--tablet-screen) {
 
         & input[type="email"] {
@@ -73,6 +97,10 @@
 
         & :-ms-input-placeholder {
             font-size: 16px;
+        }
+
+        &__error {
+            left: 26px;
         }
     }
 
@@ -102,6 +130,10 @@
 
         & :-ms-input-placeholder {
             font-size: 14px;
+        }
+
+        &__error {
+            left: 26px;
         }
     }
 }

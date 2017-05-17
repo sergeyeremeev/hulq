@@ -44,11 +44,16 @@ import jQuery from 'jquery';
             // starting from -80%, finishing after 2x window heights scrolled
 
             const scrolledHeight = $(document).scrollTop(),
+                windowHeight = $(window).height(),
                 doubleWindowHeight = $(window).height() * 2,
-                scrolledPercent = scrolledHeight / doubleWindowHeight * 40,
-                transformValue = scrolledPercent > 40 ? -40 : scrolledPercent - 80;
+                scrolledPercent = scrolledHeight / doubleWindowHeight * 35,
+                transformValue = scrolledPercent > 35 ? -45 : scrolledPercent - 80;
 
-            landing_cars.elements.carCentral.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+            landing_cars.elements.carCentral.attr('style', 'transform: translate(-45%, ' + transformValue + '%);');
+
+            if (scrolledHeight + windowHeight > $(document).height() - 100) {
+                landing_cars.elements.carCentral.addClass('drive-away').removeAttr('style');
+            }
         },
 
         animateYellowCar: () => {

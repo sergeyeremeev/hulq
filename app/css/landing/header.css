@@ -2,16 +2,16 @@
     position: fixed;
     top: 20px;
     right: 50px;
-    z-index: 3;
-    padding-right: 20px;
+    z-index: 4;
+    padding-right: 0;
 
-    & span {
+    & > span {
         margin-right: 10px;
         font-size: 14px;
         font-weight: 600;
         line-height: 56px;
         color: #fff;
-        display: none; /* TODO: hidden until implemented */
+        opacity: 0.6;
     }
 
     & .share-icon {
@@ -19,12 +19,19 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        display: none; /* TODO: hidden until implemented */
+    }
+
+    & .header-social-icon {
+        display: inline-block;
+        margin: 0 4px;
+        transform: translateY(30%);
+        opacity: 0.6;
     }
 
     @media (--tablet-screen) {
+        right: 30px;
 
-        & span {
+        & > span {
             line-height: 44px;
         }
     }
@@ -34,10 +41,12 @@
         bottom: 30px;
         right: 0;
         width: 100%;
+        z-index: 3;
         padding-right: 0;
 
-        & span,
-        & img {
+        & > span,
+        & > img,
+        & .header-social-icon {
             display: none;
         }
     }
