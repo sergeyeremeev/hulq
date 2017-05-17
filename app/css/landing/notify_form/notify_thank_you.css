@@ -9,9 +9,11 @@
     background: #fff;
     opacity: 0;
     transition: transform 0.3s var(--standard), opacity 0.3s var(--standard);
+    pointer-events: none;
 
     &.animate {
         opacity: 1;
+        pointer-events: auto;
     }
 
     &::before {
@@ -34,6 +36,10 @@
             width: 100%;
             height: auto;
         }
+    }
+
+    &.hidden {
+        pointer-events: none;
     }
 
     &--above {

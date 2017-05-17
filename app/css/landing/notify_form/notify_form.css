@@ -22,7 +22,7 @@
 
     &--head {
         position: relative;
-        margin-right: 20px;
+        margin-top: 16px;
         opacity: 0;
         transition: opacity 0.6s ease;
 
@@ -67,7 +67,10 @@
         }
 
         &--head {
+            position: absolute;
+            top: calc(100vh - 82px);
             left: 16px;
+            margin-top: 0;
             margin-right: 0;
         }
     }

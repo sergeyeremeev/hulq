@@ -88,18 +88,24 @@ const landingNotify = {
         e.preventDefault();
 
         const $thisForm = $(this).closest('.notify-form'),
-              email = $thisForm.find('input[type="email"]').val();
+            email = $thisForm.find('input[type="email"]').val();
 
         if (landingNotify.validateEmail(email)) {
-            $thisForm.submit();
-            $thisForm.find('.notify-form__thank-you').addClass('animate');
+            $.post(
+                'subscribe.php',
+                {email: email}
+            ).done(() => {
+                $thisForm.find('.notify-form__thank-you').addClass('animate');
+            }).fail(() => {
+                console.log('error');
+            });
         } else {
             $thisForm.addClass('invalid');
         }
     },
 
     closeNotifyThankyouMessage: function () {
-        $(this).closest('.notify-form__thank-you').hide();
+        $(this).closest('.notify-form__thank-you').hide().addClass('hidden');
     }
 };
 

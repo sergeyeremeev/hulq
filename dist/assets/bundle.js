@@ -10664,15 +10664,18 @@ const landingNotify = {
               email = $thisForm.find('input[type="email"]').val();
 
         if (landingNotify.validateEmail(email)) {
-            $thisForm.submit();
-            $thisForm.find('.notify-form__thank-you').addClass('animate');
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('subscribe.php', { email: email }).done(() => {
+                $thisForm.find('.notify-form__thank-you').addClass('animate');
+            }).fail(() => {
+                console.log('error');
+            });
         } else {
             $thisForm.addClass('invalid');
         }
     },
 
     closeNotifyThankyouMessage: function () {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form__thank-you').hide();
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form__thank-you').hide().addClass('hidden');
     }
 };
 

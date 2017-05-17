@@ -22,7 +22,7 @@
         }
 
         &.drive-away {
-            animation: drive-away 1.2s forwards;
+            animation: drive-away 4s forwards;
         }
     }
 
