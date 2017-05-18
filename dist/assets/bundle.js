@@ -10730,6 +10730,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', () => {
     }
 });
 
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', function () {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-banner').addClass('animate');
+});
+
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {

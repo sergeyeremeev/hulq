@@ -1,0 +1,27 @@
+.sharethis-inline-share-buttons {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+
+    & .st-total {
+        color: #fff !important;
+    }
+
+    @media (--mobile) {
+        right: 20px;
+        width: 50px;
+
+        & .st-btn {
+            display: block !important;
+            margin-top: 3px !important;
+        }
+
+        & .st-btn:last-child {
+            margin-right: 8px !important;
+        }
+
+        & .st-btn:last-child {
+            margin-right: 8px;
+        }
+    }
+}
