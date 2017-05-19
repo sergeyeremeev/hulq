@@ -25,7 +25,7 @@
         <meta name="twitter:image:src" content="https://hulq.com/assets/images/landing/landing_banner_xl.jpg">
 
         <link rel="profile" href="http://gmpg.org/xfn/11">
-        <link rel="stylesheet" href="./assets/style.css">
+        <link rel="stylesheet" href="./assets/style.css?v=0.1">
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     </head>
@@ -59,9 +59,13 @@
                     success: function(data) {
                         $('body').prepend(data);
                         $.getScript('https://hulq.com/assets/bundle.js');
-                        setTimeout(function(){
+
+                        var landingBannerImg = $('.landing-banner-image');
+
+                        landingBannerImg.on('load', function () {
                             $('.landing-section__top-banner').addClass('animate');
-                        }, 700);
+                        });
+                        landingBannerImg.attr('src', './assets/images/landing/landing_banner_xl.jpg');
                     },
                     dataType: 'html'
                 });

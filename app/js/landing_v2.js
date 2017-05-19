@@ -35,8 +35,3 @@ $(window).on('load', () => {
         landingV2.init();
     }
 });
-
-$(window).on('load', function () {
-    $('.landing-section__top-banner').addClass('animate');
-});
-
