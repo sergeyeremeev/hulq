@@ -1,2 +1,6 @@
 .idea/
 node_modules/
+gemini/
+gemini-coverage/
+gemini-report/
+.gemini.yml

@@ -5,6 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run test",
+    "gemini:update": "gemini update",
+    "gemini:test": "gemini test --reporter flat --reporter html",
     "watch": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js"
   },
@@ -30,6 +32,8 @@
     "babel-preset-env": "^1.4.0",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "gemini": "^4.18.1",
+    "gemini-browserstack": "^1.1.0",
     "jquery": "^3.2.1",
     "normalize.css": "^6.0.0",
     "postcss": "^5.2.17",
