@@ -10328,407 +10328,370 @@ return jQuery;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
-($ => {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = initLandingCars;
 
-    const landing_cars = {
+var _jquery = __webpack_require__(0);
 
-        elements: {
-            carCentral: $('.car-landing--center'),
-            carYellow: $('.car-landing--yellow'),
-            carWhite: $('.car-landing--white'),
-            carRed: $('.car-landing--red'),
-            carBlack: $('.car-landing--black'),
-            carBeige: $('.car-landing--beige'),
-            landingSectionTop: $('.landing-section__top')
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var cars = {
+    carMain: (0, _jquery2.default)('.car-landing--center'),
+    secondary: {
+        carYellow: {
+            selector: (0, _jquery2.default)('.car-landing--yellow'),
+            appearSegment: 0,
+            pathStraight: false
         },
-
-        init: () => {
-            landing_cars.slideInTopCar();
-
-            $(window).on('scroll', landing_cars.animateTopCar);
-            $(window).on('scroll', landing_cars.animateYellowCar);
-            $(window).on('scroll', landing_cars.animateWhiteCar);
-            $(window).on('scroll', landing_cars.animateRedCar);
-            $(window).on('scroll', landing_cars.animateBlackCar);
-            $(window).on('scroll', landing_cars.animateBeigeCar);
-
-            if ($(document).scrollTop() !== 0) {
-                $(window).scroll();
-            }
+        carWhite: {
+            selector: (0, _jquery2.default)('.car-landing--white'),
+            appearSegment: 1,
+            pathStraight: true
         },
-
-        slideInTopCar: () => {
-
-            landing_cars.elements.carCentral.addClass('appear');
-
-            setTimeout(() => {
-                landing_cars.elements.carCentral.addClass('appeared');
-            }, 800);
+        carRed: {
+            selector: (0, _jquery2.default)('.car-landing--red'),
+            appearSegment: 2,
+            pathStraight: true
         },
-
-        animateTopCar: () => {
-
-            // end target for central car transform = -40%
-            // starting from -80%, finishing after 2x window heights scrolled
-
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height(),
-                  doubleWindowHeight = $(window).height() * 2,
-                  scrolledPercent = scrolledHeight / doubleWindowHeight * 35,
-                  transformValue = scrolledPercent > 35 ? -45 : scrolledPercent - 80;
-
-            landing_cars.elements.carCentral.attr('style', 'transform: translate(-45%, ' + transformValue + '%);');
-
-            if (scrolledHeight + windowHeight > $(document).height() - 100) {
-                landing_cars.elements.carCentral.addClass('drive-away').removeAttr('style');
-            }
+        carBlack: {
+            selector: (0, _jquery2.default)('.car-landing--black'),
+            appearSegment: 4,
+            pathStraight: false
         },
-
-        animateYellowCar: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2;
-
-            let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercent = scrolledFromStart / segmentHeight * 125,
-                transformValue = scrolledPercent - 100;
-
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
-                landing_cars.elements.carYellow.attr('style', 'transform: translate(-50%, -100%)');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight) {
-                landing_cars.elements.carYellow.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
-            } else if (scrolledHeight > appearPoint + segmentHeight && scrolledHeight <= appearPoint + segmentHeight * 2) {
-                landing_cars.elements.carYellow.attr('style', 'transform: translate(-50%, 25%)');
-            } else if (scrolledHeight > appearPoint + segmentHeight * 2 && scrolledHeight <= appearPoint + segmentHeight * 3) {
-                scrolledFromStart = scrolledHeight - appearPoint - segmentHeight * 2;
-                scrolledPercent = scrolledFromStart / segmentHeight * 125;
-                transformValue = -scrolledPercent + 25;
-
-                landing_cars.elements.carYellow.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
-            }
-        },
-
-        animateWhiteCar: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height(),
-                  segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight;
-
-            let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercent = scrolledFromStart / segmentHeight,
-                transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
-
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(-50%, 100%);');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carWhite.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
-            }
-        },
-
-        animateRedCar: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height(),
-                  segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 2;
-
-            let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercent = scrolledFromStart / segmentHeight,
-                transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
-
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carRed.attr('style', 'transform: translate(-50%, 100%);');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carRed.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
-            }
-        },
-
-        animateBlackCar: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 4;
-
-            let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercent = scrolledFromStart / segmentHeight * 125,
-                transformValue = scrolledPercent - 100;
-
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
-                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, -100%)');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight) {
-                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
-            } else if (scrolledHeight > appearPoint + segmentHeight && scrolledHeight <= appearPoint + segmentHeight * 2) {
-                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, 25%)');
-            } else if (scrolledHeight > appearPoint + segmentHeight * 2 && scrolledHeight <= appearPoint + segmentHeight * 3) {
-                scrolledFromStart = scrolledHeight - appearPoint - segmentHeight * 2;
-                scrolledPercent = scrolledFromStart / segmentHeight * 125;
-                transformValue = -scrolledPercent + 25;
-
-                landing_cars.elements.carBlack.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
-            }
-        },
-
-        animateBeigeCar: () => {
-            const scrolledHeight = $(document).scrollTop(),
-                  windowHeight = $(window).height(),
-                  segmentHeight = $(window).height() / 3,
-                  appearPoint = landing_cars.elements.landingSectionTop.height() / 2 + segmentHeight * 6;
-
-            let scrolledFromStart = scrolledHeight - appearPoint,
-                scrolledPercent = scrolledFromStart / segmentHeight,
-                transformValue = Math.round(-scrolledPercent * windowHeight) / 2;
-
-            if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carBeige.attr('style', 'transform: translate(-50%, 100%);');
-            } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
-                landing_cars.elements.carBeige.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
-            }
+        carBeige: {
+            selector: (0, _jquery2.default)('.car-landing--beige'),
+            appearSegment: 6,
+            pathStraight: true
         }
-    };
+    }
+},
+    landingSectionTop = (0, _jquery2.default)('.landing-section__top');
 
-    $(() => {
-        if ($('.landing-main').length || $('.landing-wrapper--v1').length) {
-            landing_cars.init();
+function initLandingCars() {
+    slideInMainCar();
+
+    (0, _jquery2.default)(window).on('scroll', animateMainCar);
+
+    (0, _jquery2.default)(window).on('scroll', function () {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = Object.values(cars.secondary)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var car = _step.value;
+
+                animateSecondaryCar(car);
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
         }
     });
-})(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
+}
+
+function slideInMainCar() {
+    cars.carMain.addClass('appear');
+
+    setTimeout(function () {
+        cars.carMain.addClass('appeared');
+    }, 800);
+}
+
+function animateMainCar() {
+    var scrolledHeight = (0, _jquery2.default)(document).scrollTop(),
+        windowHeight = (0, _jquery2.default)(window).height(),
+        doubleWindowHeight = (0, _jquery2.default)(window).height() * 2,
+        scrolledPercent = scrolledHeight / doubleWindowHeight * 35,
+        transformValue = scrolledPercent > 35 ? -45 : scrolledPercent - 80;
+
+    cars.carMain.attr('style', 'transform: translate(-45%, ' + transformValue + '%);');
+
+    if (scrolledHeight + windowHeight > (0, _jquery2.default)(document).height() - 100) {
+        cars.carMain.addClass('drive-away').removeAttr('style');
+    }
+}
+
+function animateSecondaryCar(car) {
+    var scrolledHeight = (0, _jquery2.default)(document).scrollTop(),
+        windowHeight = (0, _jquery2.default)(window).height(),
+        segmentHeight = windowHeight / 3,
+        appearPoint = landingSectionTop.height() / 2 + car.appearSegment * segmentHeight;
+
+    var scrolledFromStart = scrolledHeight - appearPoint,
+        scrolledPercent = car.pathStraight ? scrolledFromStart / segmentHeight : scrolledFromStart / segmentHeight * 125,
+        transformValue = car.pathStraight ? Math.round(-scrolledPercent * windowHeight) / 2 : scrolledPercent - 100;
+
+    if (car.pathStraight) {
+        if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 4) {
+            car.selector.attr('style', 'transform: translate(-50%, 100%);');
+        } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight * 4) {
+            car.selector.attr('style', 'transform: translate(-50%, ' + transformValue + 'px);');
+        }
+    } else {
+        if (scrolledHeight <= appearPoint || scrolledHeight > appearPoint + segmentHeight * 3) {
+            car.selector.attr('style', 'transform: translate(-50%, -100%)');
+        } else if (scrolledHeight > appearPoint && scrolledHeight <= appearPoint + segmentHeight) {
+            car.selector.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+        } else if (scrolledHeight > appearPoint + segmentHeight && scrolledHeight <= appearPoint + segmentHeight * 2) {
+            car.selector.attr('style', 'transform: translate(-50%, 25%)');
+        } else if (scrolledHeight > appearPoint + segmentHeight * 2 && scrolledHeight <= appearPoint + segmentHeight * 3) {
+            scrolledFromStart = scrolledHeight - appearPoint - segmentHeight * 2;
+            scrolledPercent = scrolledFromStart / segmentHeight * 125;
+            transformValue = -scrolledPercent + 25;
+
+            car.selector.attr('style', 'transform: translate(-50%, ' + transformValue + '%);');
+        }
+    }
+}
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
-const landingContent = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = initLandingContent;
 
-    elements: {
-        onScrollAnimatedBlocks: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.on-scroll-animate'),
-        topContentBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-content'),
-        landingSectionTop: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top'),
-        fadingTopBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-content--centered')
-    },
+var _jquery = __webpack_require__(0);
 
-    init: () => {
-        landingContent.animateTopContent();
+var _jquery2 = _interopRequireDefault(_jquery);
 
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll.animate-content', landingContent.animateContentOnScroll);
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll', landingContent.fadeTopBlockOnScroll);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).resize();
-    },
-
-    animateTopContent: () => {
-        landingContent.elements.topContentBlock.addClass('animate');
-
-        setTimeout(() => {
-            landingContent.elements.topContentBlock.addClass('animate-end');
-        }, 700);
-    },
-
-    animateContentOnScroll: () => {
-        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
-              windowHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height();
-
-        landingContent.elements.onScrollAnimatedBlocks.each(function () {
-            const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
-
-            if (scrolledHeight + windowHeight >= $this.offset().top + $this.height() / 2) {
-                $this.addClass('animate');
-            }
-        });
-
-        if (!landingContent.elements.onScrollAnimatedBlocks.not('.animate').length) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).off('scroll.animate-content');
-        }
-    },
-
-    fadeTopBlockOnScroll: () => {
-        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
-              fadingHeight = landingContent.elements.landingSectionTop.height() / 2,
-              opacityValue = (1 - (scrolledHeight - fadingHeight / 2) / fadingHeight).toFixed(2);
-
-        landingContent.elements.fadingTopBlock.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
-    }
+var landingContentElements = {
+    onScrollAnimatedBlocks: (0, _jquery2.default)('.on-scroll-animate'),
+    topContentBlock: (0, _jquery2.default)('.landing-section__top-content'),
+    landingSectionTop: (0, _jquery2.default)('.landing-section__top'),
+    fadingTopBlock: (0, _jquery2.default)('.landing-section__top-content--centered')
 };
 
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
-    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper').length) {
-        landingContent.init();
+function initLandingContent() {
+    animateTopContent();
+
+    (0, _jquery2.default)(window).on('scroll.animate-content', animateContentOnScroll);
+    (0, _jquery2.default)(window).on('scroll', fadeTopBlockOnScroll);
+}
+
+function animateTopContent() {
+    landingContentElements.topContentBlock.addClass('animate');
+
+    setTimeout(function () {
+        landingContentElements.topContentBlock.addClass('animate-end');
+    }, 700);
+}
+
+function animateContentOnScroll() {
+    var scrolledHeight = (0, _jquery2.default)(document).scrollTop(),
+        windowHeight = (0, _jquery2.default)(window).height();
+
+    landingContentElements.onScrollAnimatedBlocks.each(function () {
+        var $this = (0, _jquery2.default)(this);
+
+        if (scrolledHeight + windowHeight >= $this.offset().top + $this.height() / 2) {
+            $this.addClass('animate');
+        }
+    });
+
+    if (!landingContentElements.onScrollAnimatedBlocks.not('.animate').length) {
+        (0, _jquery2.default)(window).off('scroll.animate-content');
     }
-});
+}
+
+function fadeTopBlockOnScroll() {
+    var scrolledHeight = (0, _jquery2.default)(document).scrollTop(),
+        fadingHeight = landingContentElements.landingSectionTop.height() / 2,
+        opacityValue = (1 - (scrolledHeight - fadingHeight / 2) / fadingHeight).toFixed(2);
+
+    landingContentElements.fadingTopBlock.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
+}
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
-const landingNotify = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = notifyFormsInit;
 
-    elements: {
-        topNotifyBlock: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--top').add('.notify-text'),
-        notifyFloatingForm: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form--head'),
-        notifyEmailField: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form').find('input[type="email"]'),
-        fakeNotifyButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify').not('.fake-notify--toggler'),
-        notifyThankyouClose: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.notify-form__thank-you__close'),
-        notifyFloatingButton: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.fake-notify--toggler')
-    },
+var _jquery = __webpack_require__(0);
 
-    init: () => {
-        landingNotify.animateTopForm();
+var _jquery2 = _interopRequireDefault(_jquery);
 
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('scroll', landingNotify.toggleNotifyGoTo);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-        landingNotify.elements.fakeNotifyButton.on('click', landingNotify.notifyTriggerSubmit);
-
-        landingNotify.elements.notifyEmailField.on('keyup touchend', landingNotify.notifyInputChange);
-
-        landingNotify.elements.notifyThankyouClose.on('click', landingNotify.closeNotifyThankyouMessage);
-
-        landingNotify.elements.notifyFloatingButton.on('click', landingNotify.notifyFormToggle);
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', landingNotify.hideFloatingForm);
-
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
-    },
-
-    animateTopForm: () => {
-        landingNotify.elements.topNotifyBlock.addClass('animate');
-    },
-
-    toggleNotifyGoTo: () => {
-        const scrolledHeight = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).scrollTop(),
-              lastBlock = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-block').last(),
-              maxVisibleHeight = lastBlock.offset().top;
-
-        if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).width() < 768) {
-            if (scrolledHeight >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height()) {
-                landingNotify.elements.notifyFloatingForm.addClass('animate toggled');
-            } else {
-                landingNotify.elements.notifyFloatingForm.removeClass('animate toggled');
-            }
-            return;
-        }
-
-        if (scrolledHeight >= __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).height() && scrolledHeight < maxVisibleHeight) {
-            landingNotify.elements.notifyFloatingForm.addClass('animate');
-        } else {
-            landingNotify.elements.notifyFloatingForm.removeClass('animate toggled');
-        }
-    },
-
-    notifyFormToggle: function (e) {
-        e.preventDefault();
-
-        const $this = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this),
-              $thisForm = $this.closest('.notify-form');
-
-        if ($thisForm.hasClass('toggled')) {
-            landingNotify.notifyTriggerSubmit.call(landingNotify.elements.notifyFloatingButton, e);
-        } else {
-            $this.closest('.notify-form').addClass('toggled');
-        }
-    },
-
-    hideFloatingForm: e => {
-        if (landingNotify.elements.notifyFloatingForm.hasClass('toggled') && !landingNotify.elements.notifyFloatingForm.is(e.target) && landingNotify.elements.notifyFloatingForm.has(e.target).length === 0) {
-            landingNotify.elements.notifyFloatingForm.removeClass('toggled');
-        }
-    },
-
-    notifyInputChange: function () {
-        console.log(this);
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form').removeClass('invalid');
-    },
-
-    validateEmail: email => {
-        const pattern = /.+\@.+\..+/;
-        return pattern.test(email);
-    },
-
-    notifyTriggerSubmit: function (e) {
-        e.preventDefault();
-
-        const $thisForm = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form'),
-              email = $thisForm.find('input[type="email"]').val();
-
-        if (landingNotify.validateEmail(email)) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('subscribe.php', { email: email }).done(() => {
-                $thisForm.find('.notify-form__thank-you').addClass('animate');
-            }).fail(() => {
-                console.log('error');
-            });
-        } else {
-            $thisForm.addClass('invalid');
-        }
-    },
-
-    closeNotifyThankyouMessage: function () {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).closest('.notify-form__thank-you').hide().addClass('hidden');
-    }
+var notifyFormElements = {
+    topNotifyBlock: (0, _jquery2.default)('.notify-form--top').add('.notify-text'),
+    notifyFloatingForm: (0, _jquery2.default)('.notify-form--head'),
+    notifyEmailField: (0, _jquery2.default)('.notify-form').find('input[type="email"]'),
+    fakeNotifyButton: (0, _jquery2.default)('.fake-notify').not('.fake-notify--toggler'),
+    notifyThankYouClose: (0, _jquery2.default)('.notify-form__thank-you__close'),
+    notifyFloatingButton: (0, _jquery2.default)('.fake-notify--toggler')
 };
 
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
-    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper').length) {
-        landingNotify.init();
+function notifyFormsInit() {
+    animateTopForm();
+
+    (0, _jquery2.default)(window).on('scroll', toggleNotifyGoTo);
+
+    notifyFormElements.fakeNotifyButton.on('click', notifyTriggerSubmit);
+
+    notifyFormElements.notifyEmailField.on('keyup touchend', notifyInputChange);
+
+    notifyFormElements.notifyThankYouClose.on('click', closeNotifyThankYouMessage);
+
+    notifyFormElements.notifyFloatingButton.on('click', notifyFormToggle);
+    (0, _jquery2.default)(document).on('click', hideFloatingForm);
+
+    (0, _jquery2.default)(window).scroll();
+}
+
+function animateTopForm() {
+    notifyFormElements.topNotifyBlock.addClass('animate');
+}
+
+function toggleNotifyGoTo() {
+    var scrolledHeight = (0, _jquery2.default)(document).scrollTop(),
+        lastBlock = (0, _jquery2.default)('.landing-block').last(),
+        maxVisibleHeight = lastBlock.offset().top;
+
+    if ((0, _jquery2.default)(document).width() < 768) {
+        if (scrolledHeight >= (0, _jquery2.default)(window).height()) {
+            notifyFormElements.notifyFloatingForm.addClass('animate toggled');
+        } else {
+            notifyFormElements.notifyFloatingForm.removeClass('animate toggled');
+        }
+        return;
     }
-});
+
+    if (scrolledHeight >= (0, _jquery2.default)(window).height() && scrolledHeight < maxVisibleHeight) {
+        notifyFormElements.notifyFloatingForm.addClass('animate');
+    } else {
+        notifyFormElements.notifyFloatingForm.removeClass('animate toggled');
+    }
+}
+
+function notifyFormToggle(e) {
+    e.preventDefault();
+
+    var $this = (0, _jquery2.default)(this),
+        $thisForm = $this.closest('.notify-form');
+
+    if ($thisForm.hasClass('toggled')) {
+        notifyTriggerSubmit.call(notifyFormElements.notifyFloatingButton, e);
+    } else {
+        $this.closest('.notify-form').addClass('toggled');
+    }
+}
+
+function hideFloatingForm(e) {
+    if (notifyFormElements.notifyFloatingForm.hasClass('toggled') && !notifyFormElements.notifyFloatingForm.is(e.target) && notifyFormElements.notifyFloatingForm.has(e.target).length === 0) {
+        notifyFormElements.notifyFloatingForm.removeClass('toggled');
+    }
+}
+
+function notifyInputChange() {
+    console.log(this);
+    (0, _jquery2.default)(this).closest('.notify-form').removeClass('invalid');
+}
+
+function validateEmail(email) {
+    var pattern = /.+\@.+\..+/;
+    return pattern.test(email);
+}
+
+function notifyTriggerSubmit(e) {
+    e.preventDefault();
+
+    var $thisForm = (0, _jquery2.default)(this).closest('.notify-form'),
+        email = $thisForm.find('input[type="email"]').val();
+
+    if (validateEmail(email)) {
+        _jquery2.default.post('subscribe.php', { email: email }).done(function () {
+            $thisForm.find('.notify-form__thank-you').addClass('animate');
+        }).fail(function () {
+            console.log('error');
+        });
+    } else {
+        $thisForm.addClass('invalid');
+    }
+}
+
+function closeNotifyThankYouMessage() {
+    (0, _jquery2.default)(this).closest('.notify-form__thank-you').hide().addClass('hidden');
+}
 
 /***/ }),
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
 
-const landingV2 = {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = initAlternativeLanding;
 
-    elements: {
-        topBanner: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__top-banner'),
-        bottomTitle: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-title'),
-        bottomCut: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-cut'),
-        bottomBackgroundFill: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-section__bottom-bg-fill')
-    },
+var _jquery = __webpack_require__(0);
 
-    init: () => {
-        landingV2.animateTopBanner();
+var _jquery2 = _interopRequireDefault(_jquery);
 
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('resize', landingV2.setBottomCutSize);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).scroll();
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).resize();
-    },
-
-    setBottomCutSize: () => {
-        const bottomTitleSize = landingV2.elements.bottomTitle.height();
-
-        landingV2.elements.bottomCut.height(bottomTitleSize);
-        landingV2.elements.bottomBackgroundFill.attr('style', 'top: ' + bottomTitleSize + 'px;');
-    },
-
-    animateTopBanner: () => {
-        landingV2.elements.topBanner.addClass('animate');
-    }
+var landingAlternativeElements = {
+    topBanner: (0, _jquery2.default)('.landing-section__top-banner'),
+    bottomTitle: (0, _jquery2.default)('.landing-section__bottom-title'),
+    bottomCut: (0, _jquery2.default)('.landing-section__bottom-cut'),
+    bottomBackgroundFill: (0, _jquery2.default)('.landing-section__bottom-bg-fill')
 };
 
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', () => {
-    if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.landing-wrapper--v2').length) {
-        landingV2.init();
-    }
-});
+function initAlternativeLanding() {
+    animateTopBanner();
+
+    (0, _jquery2.default)(window).on('resize', setBottomCutSize);
+
+    (0, _jquery2.default)(window).scroll();
+    (0, _jquery2.default)(window).resize();
+}
+
+function setBottomCutSize() {
+    var bottomTitleSize = landingAlternativeElements.bottomTitle.height();
+
+    landingAlternativeElements.bottomCut.height(bottomTitleSize);
+    landingAlternativeElements.bottomBackgroundFill.attr('style', 'top: ' + bottomTitleSize + 'px;');
+}
+
+function animateTopBanner() {
+    landingAlternativeElements.topBanner.addClass('animate');
+}
 
 /***/ }),
 /* 5 */
@@ -10738,25 +10701,45 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).on('load', () => {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_css__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_landing_content_js__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_landing_v2_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__js_landing_notify__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__js_landing_cars_js__ = __webpack_require__(1);
-// CSS imports
 
+
+__webpack_require__(5);
+
+var _landing_content = __webpack_require__(2);
+
+var _landing_content2 = _interopRequireDefault(_landing_content);
+
+var _landing_v = __webpack_require__(4);
+
+var _landing_v2 = _interopRequireDefault(_landing_v);
+
+var _landing_notify = __webpack_require__(3);
+
+var _landing_notify2 = _interopRequireDefault(_landing_notify);
+
+var _landing_cars = __webpack_require__(1);
+
+var _landing_cars2 = _interopRequireDefault(_landing_cars);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // JS imports
-
-
-
-
-
+$(function () {
+    if ($('.landing-wrapper--v1').length) {
+        (0, _landing_cars2.default)();
+    }
+    if ($('.landing-wrapper--v2').length) {
+        (0, _landing_v2.default)();
+    }
+    if ($('.landing-wrapper').length) {
+        (0, _landing_content2.default)();
+        (0, _landing_notify2.default)();
+    }
+}); // CSS imports
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

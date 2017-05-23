@@ -1525,7 +1525,7 @@ ul {
   }
 }/* Landing share buttons */.sharethis-inline-share-buttons {
     position: fixed;
-    top: 20px;
+    top: 30px;
     right: 30px
 }.sharethis-inline-share-buttons .st-total{
   color: #fff !important;
@@ -1542,3 +1542,4 @@ ul {
   }
     }
 
+/*# sourceMappingURL=style.css.map*/

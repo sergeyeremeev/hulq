@@ -1,7 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+    devtool: 'source-map',
     context: path.resolve(__dirname, './app'),
     entry: './app.js',
     output: {
@@ -13,9 +15,12 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules|bower_components|gemini|gemini-report|gemini-coverage)/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    query: {
+                        presets: ['es2015']
+                    }
                 }
             },
             {
@@ -39,7 +44,15 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin({filename: 'style.css', allChunks: true})
+        new ExtractTextPlugin({filename: 'style.css', allChunks: true}),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': 'production'
+        // }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compressor: {
+        //         warnings: false
+        //     }
+        // })
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
