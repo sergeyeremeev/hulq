@@ -22,8 +22,6 @@ export default function notifyFormsInit() {
 
     notifyFormElements.notifyFloatingButton.on('click', notifyFormToggle);
     $(document).on('click', hideFloatingForm);
-
-    $(window).scroll();
 }
 
 function animateTopForm() {
@@ -94,6 +92,12 @@ function notifyTriggerSubmit(e) {
             {email: email}
         ).done(() => {
             $thisForm.find('.notify-form__thank-you').addClass('animate');
+
+            window.dataLayer.push({
+                'event': 'trackEvent',
+                'eventCategory': 'Pre-registration',
+                'eventAction': 'Email Signup'
+            });
         }).fail(() => {
             console.log('error');
         });

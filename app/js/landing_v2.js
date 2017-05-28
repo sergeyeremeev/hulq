@@ -11,9 +11,6 @@ export default function initAlternativeLanding() {
     animateTopBanner();
 
     $(window).on('resize', setBottomCutSize);
-
-    $(window).scroll();
-    $(window).resize();
 }
 
 function setBottomCutSize() {

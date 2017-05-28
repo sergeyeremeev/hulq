@@ -2,6 +2,8 @@
 import './app.css';
 
 // JS imports
+import $ from 'jquery';
+
 import initLandingContent from './js/landing_content.js';
 import initAlternativeLanding from './js/landing_v2.js';
 
@@ -19,4 +21,7 @@ $(() => {
         initLandingContent();
         initNotifyForms();
     }
+
+    $(window).scroll();
+    $(window).resize();
 });

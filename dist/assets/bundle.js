@@ -10569,8 +10569,6 @@ function notifyFormsInit() {
 
     notifyFormElements.notifyFloatingButton.on('click', notifyFormToggle);
     (0, _jquery2.default)(document).on('click', hideFloatingForm);
-
-    (0, _jquery2.default)(window).scroll();
 }
 
 function animateTopForm() {
@@ -10636,6 +10634,12 @@ function notifyTriggerSubmit(e) {
     if (validateEmail(email)) {
         _jquery2.default.post('subscribe.php', { email: email }).done(function () {
             $thisForm.find('.notify-form__thank-you').addClass('animate');
+
+            window.dataLayer.push({
+                'event': 'trackEvent',
+                'eventCategory': 'Pre-registration',
+                'eventAction': 'Email Signup'
+            });
         }).fail(function () {
             console.log('error');
         });
@@ -10677,9 +10681,6 @@ function initAlternativeLanding() {
     animateTopBanner();
 
     (0, _jquery2.default)(window).on('resize', setBottomCutSize);
-
-    (0, _jquery2.default)(window).scroll();
-    (0, _jquery2.default)(window).resize();
 }
 
 function setBottomCutSize() {
@@ -10708,6 +10709,10 @@ function animateTopBanner() {
 
 __webpack_require__(5);
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 var _landing_content = __webpack_require__(2);
 
 var _landing_content2 = _interopRequireDefault(_landing_content);
@@ -10726,19 +10731,24 @@ var _landing_cars2 = _interopRequireDefault(_landing_cars);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// JS imports
-$(function () {
-    if ($('.landing-wrapper--v1').length) {
+// CSS imports
+(0, _jquery2.default)(function () {
+    if ((0, _jquery2.default)('.landing-wrapper--v1').length) {
         (0, _landing_cars2.default)();
     }
-    if ($('.landing-wrapper--v2').length) {
+    if ((0, _jquery2.default)('.landing-wrapper--v2').length) {
         (0, _landing_v2.default)();
     }
-    if ($('.landing-wrapper').length) {
+    if ((0, _jquery2.default)('.landing-wrapper').length) {
         (0, _landing_content2.default)();
         (0, _landing_notify2.default)();
     }
-}); // CSS imports
+
+    (0, _jquery2.default)(window).scroll();
+    (0, _jquery2.default)(window).resize();
+});
+
+// JS imports
 
 /***/ })
 /******/ ]);
