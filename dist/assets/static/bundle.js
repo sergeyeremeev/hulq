@@ -10732,12 +10732,18 @@ var _landing_cars2 = _interopRequireDefault(_landing_cars);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // CSS imports
+(0, _jquery2.default)(window).on('load', function () {
+    if ((0, _jquery2.default)('.landing-wrapper--v2').length) {
+        (0, _landing_v2.default)();
+    }
+});
+
+// JS imports
+
+
 (0, _jquery2.default)(function () {
     if ((0, _jquery2.default)('.landing-wrapper--v1').length) {
         (0, _landing_cars2.default)();
-    }
-    if ((0, _jquery2.default)('.landing-wrapper--v2').length) {
-        (0, _landing_v2.default)();
     }
     if ((0, _jquery2.default)('.landing-wrapper').length) {
         (0, _landing_content2.default)();
@@ -10747,8 +10753,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     (0, _jquery2.default)(window).scroll();
     (0, _jquery2.default)(window).resize();
 });
-
-// JS imports
 
 /***/ })
 /******/ ]);
