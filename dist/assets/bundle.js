@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "assets";
+/******/ 	__webpack_require__.p = "assets/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 6);
@@ -10486,7 +10486,8 @@ var landingContentElements = {
     onScrollAnimatedBlocks: (0, _jquery2.default)('.on-scroll-animate'),
     topContentBlock: (0, _jquery2.default)('.landing-section__top-content'),
     landingSectionTop: (0, _jquery2.default)('.landing-section__top'),
-    fadingTopBlock: (0, _jquery2.default)('.landing-section__top-content--centered')
+    fadingTopBlock: (0, _jquery2.default)('.landing-section__top-content--centered'),
+    shareToggler: (0, _jquery2.default)('.share-toggle')
 };
 
 function initLandingContent() {
@@ -10494,6 +10495,8 @@ function initLandingContent() {
 
     (0, _jquery2.default)(window).on('scroll.animate-content', animateContentOnScroll);
     (0, _jquery2.default)(window).on('scroll', fadeTopBlockOnScroll);
+
+    landingContentElements.shareToggler.on('click', toggleShareIcons);
 }
 
 function animateTopContent() {
@@ -10527,6 +10530,10 @@ function fadeTopBlockOnScroll() {
         opacityValue = (1 - (scrolledHeight - fadingHeight / 2) / fadingHeight).toFixed(2);
 
     landingContentElements.fadingTopBlock.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
+}
+
+function toggleShareIcons() {
+    (0, _jquery2.default)('.sharethis-inline-share-buttons').toggleClass('visible');
 }
 
 /***/ }),
@@ -10634,6 +10641,7 @@ function notifyTriggerSubmit(e) {
     if (validateEmail(email)) {
         _jquery2.default.post('subscribe.php', { email: email }).done(function () {
             $thisForm.find('.notify-form__thank-you').addClass('animate');
+            $thisForm.find('input[type="email"]').val('');
 
             window.dataLayer.push({
                 'event': 'trackEvent',

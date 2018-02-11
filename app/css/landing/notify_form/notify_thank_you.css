@@ -88,3 +88,11 @@
         }
     }
 }
+
+.thankyou-message__head {
+    display: block;
+    opacity: 0.7;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}

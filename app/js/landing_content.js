@@ -4,7 +4,8 @@ const landingContentElements = {
     onScrollAnimatedBlocks: $('.on-scroll-animate'),
     topContentBlock: $('.landing-section__top-content'),
     landingSectionTop: $('.landing-section__top'),
-    fadingTopBlock: $('.landing-section__top-content--centered')
+    fadingTopBlock: $('.landing-section__top-content--centered'),
+    shareToggler: $('.share-toggle')
 };
 
 export default function initLandingContent() {
@@ -12,6 +13,8 @@ export default function initLandingContent() {
 
     $(window).on('scroll.animate-content', animateContentOnScroll);
     $(window).on('scroll', fadeTopBlockOnScroll);
+
+    landingContentElements.shareToggler.on('click', toggleShareIcons);
 }
 
 function animateTopContent() {
@@ -45,4 +48,8 @@ function fadeTopBlockOnScroll() {
         opacityValue = (1 - (scrolledHeight - fadingHeight / 2) / fadingHeight).toFixed(2);
 
     landingContentElements.fadingTopBlock.attr('style', 'opacity: ' + (opacityValue <= 0 ? 0 : opacityValue));
+}
+
+function toggleShareIcons() {
+    $('.sharethis-inline-share-buttons').toggleClass('visible');
 }

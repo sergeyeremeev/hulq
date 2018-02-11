@@ -92,6 +92,7 @@ function notifyTriggerSubmit(e) {
             {email: email}
         ).done(() => {
             $thisForm.find('.notify-form__thank-you').addClass('animate');
+            $thisForm.find('input[type="email"]').val('');
 
             window.dataLayer.push({
                 'event': 'trackEvent',

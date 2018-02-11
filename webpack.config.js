@@ -3,12 +3,12 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    devtool: 'source-map',
+        devtool: 'source-map',
     context: path.resolve(__dirname, './app'),
     entry: './app.js',
     output: {
-        path: path.resolve(__dirname, './dist/assets/static'),
-        publicPath: 'assets/static',
+        path: path.resolve(__dirname, './dist/assets/'),
+        publicPath: 'assets/',
         filename: 'bundle.js'
     },
     module: {
